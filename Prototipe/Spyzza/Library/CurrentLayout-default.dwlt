@@ -338,20 +338,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Habitaciones
+    - Assets/Presets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs/Habitaciones
+  - Assets/Presets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Desktop\Github\Spyzza\Prototipe\Spyzza
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 004f0000
-    m_LastClickedID: 20224
-    m_ExpandedIDs: 00000000ea4e0000fe4e000000ca9a3b
+    m_SelectedIDs: fa4e0000
+    m_LastClickedID: 20218
+    m_ExpandedIDs: 00000000ea4e0000f64e0000fe4e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -502,23 +502,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 70fbffff
+      m_SelectedIDs: 16800000
+      m_LastClickedID: 32790
+      m_ExpandedIDs: c612fffff05fffff30aeffffa4baffffa4bfffffccc0ffff52cdffff3ad1ffff42d7ffffc8e3ffff74e9ffffc6ebffff70fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Hall
+        m_OriginalName: Hall
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: -20944
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 4}
       m_SearchString: 
@@ -564,9 +564,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -6.7392693, y: -10.6579075, z: 22.990078}
+    m_Target: {x: -13.145733, y: -8.803776, z: 21.89534}
     speed: 2
-    m_Value: {x: -6.7392693, y: -10.6579075, z: 22.990078}
+    m_Value: {x: -13.145733, y: -8.803776, z: 21.89534}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -612,13 +612,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.33009523, y: -0.6037542, z: 0.30196238, w: 0.65985274}
+    m_Target: {x: -0.5066983, y: 0.0044552083, z: -0.0025360766, w: -0.86219466}
     speed: 2
-    m_Value: {x: -0.3300952, y: 0.6037542, z: -0.30196235, w: -0.65985274}
+    m_Value: {x: -0.50795317, y: 0.0044510667, z: -0.002542569, w: -0.86136943}
   m_Size:
-    m_Target: 26.344534
+    m_Target: 32.02269
     speed: 2
-    m_Value: 26.344534
+    m_Value: 30.643723
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -636,7 +636,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: -0.2876957, y: -0.049360204, z: 0.014897378, w: -0.9564102}
+  m_LastSceneViewRotation: {x: -0.28636107, y: -0.6584826, z: 0.30023924, w: -0.62799734}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -664,7 +664,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -1544
+    x: 376
     y: 73
     width: 1125
     height: 572
@@ -693,8 +693,8 @@ MonoBehaviour:
     vZoomLockedByDefault: 0
     m_HBaseRangeMin: -562.5
     m_HBaseRangeMax: 562.5
-    m_VBaseRangeMin: -286
-    m_VBaseRangeMax: 286
+    m_VBaseRangeMin: -275.5
+    m_VBaseRangeMax: 275.5
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -711,11 +711,11 @@ MonoBehaviour:
     m_DrawArea:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 21
       width: 1125
-      height: 572
+      height: 551
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 562.5, y: 286}
+    m_Translation: {x: 562.5, y: 275.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -723,9 +723,9 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -562.5
-      y: -286
+      y: -275.5
       width: 1125
-      height: 572
+      height: 551
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 1125, y: 572}
