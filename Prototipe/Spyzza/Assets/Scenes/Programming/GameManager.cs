@@ -10,6 +10,7 @@ public class GameManager : Singleton<GameManager>
     public Player player;
     public GameObject mainCanvas;
     public GameObject inventaryCanvas;
+    public GameObject alarmCanvas;
     public GameObject gameOverCanvas;
 
 
@@ -33,7 +34,7 @@ public class GameManager : Singleton<GameManager>
          * 
          * */
         
-         
+        /* 
         if (Input.GetKey(KeyCode.K))
         {
             SaveSystem.SavePlayer(player);
@@ -43,7 +44,7 @@ public class GameManager : Singleton<GameManager>
         {
             player.GetComponent<Player>().LoadPlayer();
         }
-        
+        */
 
         if (Input.GetKey(KeyCode.L))
         {
@@ -75,5 +76,21 @@ public class GameManager : Singleton<GameManager>
         player.GetComponent<Player>().LoadPlayer();
     }
 
-    
+    public void MessagePostIt()
+    {
+        Toast.Instance.Show("Contraseña caja fuerte 8437", 2f, Toast.ToastColor.Dark);
+    }
+
+
+    public void MessageSafe()
+    {
+        Toast.Instance.Show("No sabes la contraseña", 2f, Toast.ToastColor.Dark);
+    }
+
+    public void MessageCard()
+    {
+        Toast.Instance.Show("No tienes las targetas", 2f, Toast.ToastColor.Dark);
+    }
+
+
 }

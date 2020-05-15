@@ -10,7 +10,7 @@ public class AlarmManager : MonoBehaviour
     public GameObject[] pins;
     public GameObject canvasGameOver;
     public GameObject canvasWin;
-    public Animator animatorCamera;
+    //public Animator animatorCamera;
     
 
     public void Update()
@@ -36,7 +36,7 @@ public class AlarmManager : MonoBehaviour
         }
         rotator.enabled = false;
         spawner.enabled = false;
-        animatorCamera.SetTrigger("EndGame");
+        //animatorCamera.SetTrigger("EndGame");
         gameHasEnded = true;
         canvasGameOver.SetActive(true);
     }
@@ -50,7 +50,7 @@ public class AlarmManager : MonoBehaviour
         GameObject.FindGameObjectsWithTag("Pin");
         foreach (GameObject pin in pins)
         Destroy(pin);
-        animatorCamera.SetTrigger("RestartGame");
+        //animatorCamera.SetTrigger("RestartGame");
         Score.PinCount = 0;      
     }
 
@@ -62,7 +62,7 @@ public class AlarmManager : MonoBehaviour
         }
         rotator.enabled = false;
         spawner.enabled = false;
-        animatorCamera.SetTrigger("WinGame");
+        //animatorCamera.SetTrigger("WinGame");
         gameHasEnded = true;
         canvasWin.SetActive(true);
     }
