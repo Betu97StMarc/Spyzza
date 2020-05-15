@@ -4,28 +4,29 @@ using UnityEngine;
 
 public class CamMovement : MonoBehaviour
 {
-    public Transform body;
-    public float rotY;
-    public float RotationSpeed = 10f;
+    
+    public float rotZ;
+    public float RotationSpeed = 25f;
   
     // Start is called before the first frame update
     void Start()
     {
-        body.transform.eulerAngles = new Vector3(0, 0, 0);
+        transform.eulerAngles = new Vector3(-90, 0, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
         //Rotación Cámara
-        rotY += RotationSpeed * Time.deltaTime;
-        body.transform.eulerAngles = new Vector3(0, rotY, 0);
+        rotZ += RotationSpeed * Time.deltaTime;
+        transform.localEulerAngles = new Vector3(-90, 0, rotZ);
+        
+        
+       
         //Delimitación de la rotación
-        if (rotY >= 50 || rotY <= -50)
+        if (rotZ >= 50|| rotZ <= -50)
         {
             RotationSpeed *= -1;
-        }
-        
-        
+        }       
     }
 }
