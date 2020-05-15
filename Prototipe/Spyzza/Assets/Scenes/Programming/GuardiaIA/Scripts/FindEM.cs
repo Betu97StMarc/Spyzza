@@ -12,8 +12,10 @@ public class FindEM : MonoBehaviour
     public Vector3 lastPos;
     public AnimationClip lookArround;
     float animationLenght;
+    float startY;
     public int next = 0;
     public Vector3 lastKnown;
+    bool catched = false;
     public LayerMask ObstacleMask;
     public GameObject[] patrolPoints; //Puntos a los que se movera/volvera el guardia mientras el jugador no haya sido escuchado/visto
 
@@ -22,29 +24,35 @@ public class FindEM : MonoBehaviour
 
     private void Start()
     {
+        startY = transform.position.y;
         animationLenght = lookArround.length;
     }
     private void Update()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (!catched)
         {
-            hearStop = true;
-        } else
-        {
-            hearStop = false;
-        }
-         if (Vector3.Distance(transform.position, player.transform.position) <= hearingRadius)
+            if (Input.GetKey(KeyCode.LeftShift))
             {
-                if (!hearStop){Hear();}
+                hearStop = true;
+            }
+            else
+            {
+                hearStop = false;
+            }
+            if (Vector3.Distance(transform.position, player.transform.position) <= hearingRadius)
+            {
+                if (!hearStop) { Hear(); }
                 See();
-            } else if(!hasSeen)
+            }
+            else if (!hasSeen)
             {
                 Patrol();
             }
-         if (!canSee && hasSeen && Vector3.Distance(transform.position, player.transform.position) >= seeRadius)
+            if (!canSee && hasSeen && Vector3.Distance(transform.position, player.transform.position) >= seeRadius)
             {
                 LastPosition(lastKnown);
             }
+        }
     }
     #region Codigo
     IEnumerator resumePatrol()
@@ -55,7 +63,7 @@ public class FindEM : MonoBehaviour
             Patrol();
     }
     void Catch() {
-
+        catched = true; 
         //GameOver
     
     }
@@ -116,12 +124,15 @@ public class FindEM : MonoBehaviour
 
     public void MoveToPlayer(Vector3 playerPosition)
     {
-        transform.position = Vector3.MoveTowards(transform.position, playerPosition, Speed * Time.deltaTime);
-        lastKnown = playerPosition;
-        if(Vector3.Distance(transform.position, playerPosition) <= 1.5f)
-        {
-            Catch();
-        }
+        if (!catched){
+                transform.position = Vector3.MoveTowards(transform.position, playerPosition, Speed * Time.deltaTime);
+                transform.position = new Vector3(transform.position.x, startY, transform.position.z);
+                lastKnown = playerPosition;
+                if (Vector3.Distance(transform.position, playerPosition) <= 1f)
+                {
+                    Catch();
+                }
+            }
     }
     void LastPosition(Vector3 LastPosition)
     {
