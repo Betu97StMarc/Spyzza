@@ -5,31 +5,36 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public int level;
-    public int health;
-    public Text xT;
-    public Text yT;
-    public Text zT;
-    public Text levelT;
-    public Text healthT;
+    public bool alive;
+    public bool alarm;
+    public bool mug;
+    public bool postIt;
+    public bool card1;
+    public bool card2;
+    public bool card3;
+    //public Text xT;
+    //public Text yT;
+    //public Text zT;
+    public static Vector3 position;
+    public static Vector3 startPosition;
 
-    /*
-    * 
-    * INFO: Método para aumentar el level
-    * 
-    */
-    public void MoreLevel()
+    public void Awake()
     {
-       level++;
+        alive = true;
+        alarm = false;
+        mug = false;
+        postIt = false;
+        card1 = false;
+        card2 = false;
+        card3 = false;
+        
     }
-    /*
-    * 
-    * INFO: Método para aumentar el health
-    * 
-    */
-    public void MoreHealth()
+    public void Update()
     {
-        health++;
+        //xT.text = gameObject.transform.position.x.ToString();
+        //yT.text = gameObject.transform.position.y.ToString();
+        //zT.text = gameObject.transform.position.z.ToString();
+        position = transform.position;
     }
 
     /*
@@ -51,10 +56,10 @@ public class Player : MonoBehaviour
     {
         PlayerData data = SaveSystem.LoadPlayer();
 
-        level = data.level;
-        health = data.health;
+        //level = data.level;
+        //health = data.health;
 
-        Vector3 position;
+        
         position.x = data.position[0];
         position.y = data.position[1];
         position.z = data.position[2];
@@ -62,13 +67,6 @@ public class Player : MonoBehaviour
     }
 
 
-    public void Update()
-    {
-        xT.text = gameObject.transform.position.x.ToString();
-        yT.text = gameObject.transform.position.y.ToString();
-        zT.text = gameObject.transform.position.z.ToString();
-        levelT.text = level.ToString();
-        healthT.text = health.ToString();
-    }
+    
 
 }
