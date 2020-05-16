@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 781, y: 492}
   m_MaxSize: {x: 16006, y: 14042}
   vertical: 0
-  controlID: 149
+  controlID: 137
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 505, y: 492}
   m_MaxSize: {x: 12005, y: 14042}
   vertical: 1
-  controlID: 150
+  controlID: 138
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_MinSize: {x: 505, y: 221}
   m_MaxSize: {x: 12005, y: 4021}
   vertical: 0
-  controlID: 151
+  controlID: 139
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -335,9 +335,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 52.396458, y: -8.228197, z: 5.70642}
+    m_Target: {x: 35.739708, y: -27.305798, z: 3.5685368}
     speed: 2
-    m_Value: {x: 52.396458, y: -8.228197, z: 5.70642}
+    m_Value: {x: 35.739708, y: -27.305798, z: 3.5685368}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -383,13 +383,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.021111114, y: 0.76978576, z: -0.025763066, w: -0.6375913}
+    m_Target: {x: -0.15089212, y: 0.8489169, z: -0.36134496, w: -0.35525182}
     speed: 2
-    m_Value: {x: -0.020152895, y: 0.76974577, z: -0.024605682, w: -0.6375578}
+    m_Value: {x: -0.15087685, y: 0.848831, z: -0.3613084, w: -0.35521588}
   m_Size:
-    m_Target: 1.0943828
+    m_Target: 21.512524
     speed: 2
-    m_Value: 1.0943828
+    m_Value: 20.586147
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -534,9 +534,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 10fbffff
-      m_LastClickedID: -1264
-      m_ExpandedIDs: 1efbffff26fbffff2cfbffff70fbffff46450000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 28e6ffff70fbffff3c4400007a4400009044000094440000dc440000464500005245000004460000ee460000be470000c248000088490000bc490000c24900003c4a00005e4a00009e4a0000c24a0000cc4a0000164b0000ca4b00001c4c0000344c00006a4c0000824c0000d84c0000e64c0000624d00006e4d0000b04d0000b24d0000e04d0000604e0000644e00006c4e00008e4e0000144f00004a4f0000504f00007e4f0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -680,19 +680,19 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scenes/LevelDesign
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Textures
+  - Assets/Scenes/LevelDesign
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: "C:\\Users\\Andr\xE9s\\Desktop\\spypizza\\Spyzza-master\\Prototipe\\Spyzza"
+  m_LastProjectPath: D:\Desktop\Github\Spyzza\Prototipe\Spyzza
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 67}
-    m_SelectedIDs: 505b0000
-    m_LastClickedID: 23376
+    m_SelectedIDs: 7e5b0000
+    m_LastClickedID: 23422
     m_ExpandedIDs: 00000000505b0000525b0000545b0000565b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
