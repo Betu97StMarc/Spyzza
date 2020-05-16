@@ -8,24 +8,24 @@ public class FieldOfView : MonoBehaviour
     public float viewRadius;
     [Range(0, 360)]
     public float viewAngle;
-
     public bool encontrado = false;
 
     public LayerMask targetMask;
     public LayerMask obstacleMask;
 
-    
+
     [HideInInspector]
     public List<Transform> visibleTargets = new List<Transform>();
     //llamar a la función de detectar al target
     void Start()
     {
-        StartCoroutine("FindTargetsWithDelay", .2f);
+        StartCoroutine("FindTargetsWithDelay", 0.2f);
+        
     }
 
     private void Update()
     {
-        
+
     }
 
     IEnumerator FindTargetsWithDelay(float delay)
@@ -34,10 +34,10 @@ public class FieldOfView : MonoBehaviour
         {
             yield return new WaitForSeconds(delay);
             FindVisibleTargets();
-            
+
         }
-        
-        
+
+
     }
     //Logica para encontrar al target
     void FindVisibleTargets()
@@ -49,7 +49,7 @@ public class FieldOfView : MonoBehaviour
         {
             Transform target = targetsInViewRadius[i].transform;
             Vector3 dirToTarget = (target.position - transform.position).normalized;
-            if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2)
+            if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 1)
             {
                 float dstToTarget = Vector3.Distance(transform.position, target.position);
 
@@ -58,8 +58,8 @@ public class FieldOfView : MonoBehaviour
                     visibleTargets.Add(target);
                     encontrado = true;
                 }
-                
-               
+
+
             }
         }
     }
@@ -71,42 +71,8 @@ public class FieldOfView : MonoBehaviour
         {
             angleInDegrees += transform.eulerAngles.y;
         }
-        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
+        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), -0f, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
 
-    public Vector3 DirFromAngle2(float angleInDegrees, bool angleIsGlobal)
-    {
-        if (!angleIsGlobal)
-        {
-            angleInDegrees += transform.eulerAngles.y;
-        }
-        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), -0.5f, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
-    }
-
-    public Vector3 DirFromAngle3(float angleInDegrees, bool angleIsGlobal)
-    {
-        if (!angleIsGlobal)
-        {
-            angleInDegrees += transform.eulerAngles.y;
-        }
-        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad),-1, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
-    }
-
-    public Vector3 DirFromAngle4(float angleInDegrees, bool angleIsGlobal)
-    {
-        if (!angleIsGlobal)
-        {
-            angleInDegrees += transform.eulerAngles.y;
-        }
-        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), -1.5f, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
-    }
-
-    public Vector3 DirFromAngle5(float angleInDegrees, bool angleIsGlobal)
-    {
-        if (!angleIsGlobal)
-        {
-            angleInDegrees += transform.eulerAngles.y;
-        }
-        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), -2, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
-    }
+    
 }

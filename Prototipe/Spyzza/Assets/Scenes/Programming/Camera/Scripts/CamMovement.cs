@@ -11,7 +11,7 @@ public class CamMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.eulerAngles = new Vector3(-90, 0, 0);
+        //transform.eulerAngles = new Vector3(-90, 0, 0);
     }
 
     // Update is called once per frame
@@ -19,7 +19,7 @@ public class CamMovement : MonoBehaviour
     {
         //Rotación Cámara
         rotZ += RotationSpeed * Time.deltaTime;
-        transform.localEulerAngles = new Vector3(-90, 0, rotZ);
+        transform.localEulerAngles = new Vector3(0, rotZ, 0);
         
         
        

@@ -5,6 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Rotator
+  - Pin
+  - DisconnectAlarm
+  - Rumba
+  - CajaFuerte
+  - Escalar
+  - EscalarReuniones
+  - EscalarCajaFuerte
   layers:
   - Default
   - TransparentFX

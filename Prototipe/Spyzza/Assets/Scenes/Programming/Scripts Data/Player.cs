@@ -37,12 +37,68 @@ public class Player : MonoBehaviour
         position = transform.position;
     }
 
-    /*
-    * 
-    * INFO: Método para guardar player
-    * 
-    */
-    public void SavePlayer()
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "DisconnectAlarm")
+        {
+            GameManager.Instance.setIsThePlayerColliding(true);
+            GameManager.Instance.SetTagCollidingObject(other.tag);
+        }
+
+        if (other.tag == "EscalarReuniones")
+        {
+            GameManager.Instance.setIsThePlayerColliding(true);
+            GameManager.Instance.SetTagCollidingObject(other.tag);
+        }
+
+        if (other.tag == "EscalarCajaFuerte")
+        {
+            GameManager.Instance.setIsThePlayerColliding(true);
+            GameManager.Instance.SetTagCollidingObject(other.tag);
+        }
+
+        if (other.tag == "CajaFuerte")
+        {
+            GameManager.Instance.setIsThePlayerColliding(true);
+            GameManager.Instance.SetTagCollidingObject(other.tag);
+        }
+
+        if (other.tag == "Rumba")
+        {
+            alive = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "DisconnectAlarm")
+        {
+            GameManager.Instance.setIsThePlayerColliding(false);
+        }
+
+        if (other.tag == "EscalarReuniones")
+        {
+            GameManager.Instance.setIsThePlayerColliding(false);
+        }
+
+        if (other.tag == "EscalarCajaFuerte")
+        {
+            GameManager.Instance.setIsThePlayerColliding(false);
+        }
+
+        if (other.tag == "CajaFuerte")
+        {
+            GameManager.Instance.setIsThePlayerColliding(false);
+        }
+    }
+
+
+        /*
+        * 
+        * INFO: Método para guardar player
+        * 
+        */
+        public void SavePlayer()
     {
         SaveSystem.SavePlayer(this);
     }

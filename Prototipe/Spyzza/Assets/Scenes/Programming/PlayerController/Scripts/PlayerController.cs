@@ -27,54 +27,47 @@ public class PlayerController : MonoBehaviour
         playerC.SetFloat("Vertical", y);
         playerC.SetFloat("Speed", speed);
 
-        
-       if (Input.GetKey(KeyCode.W))
-        {  
-            transform.Translate(Vector3.forward * Time.deltaTime * speed);
-            if(Input.GetKey(KeyCode.A) ||  Input.GetKey(KeyCode.D))
+        if (!this.GetComponent<ActionController>().isActionActive)
+        {
+            if (Input.GetKey(KeyCode.W))
             {
-                speed = 1f;
+                transform.Translate(Vector3.forward * Time.deltaTime * speed);
+                if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+                {
+                    speed = 1f;
+                }
+            }
+
+            if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
+            {
+                speed = 2.5f;
+                transform.Translate(Vector3.forward * Time.deltaTime * speed);
+            }
+
+            else if (!Input.GetKey(KeyCode.LeftControl) && (!Input.GetKey(KeyCode.LeftShift)))
+            {
+                speed = 1.9f;
+            }
+
+
+            if (Input.GetKey(KeyCode.S))
+
+                transform.Translate(-1 * Vector3.forward * Time.deltaTime * speed);
+
+            if (Input.GetKey(KeyCode.A))
+                transform.Translate(Vector3.left * Time.deltaTime * speed);
+
+            if (Input.GetKey(KeyCode.D))
+                transform.Translate(Vector3.right * Time.deltaTime * speed);
+
+            if (Input.GetButtonDown("Jump") && canJump)
+            {
+                canJump = false;
+                gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 250f, 0));
+                playerC.Play("Jump");
             }
         }
-
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
-        {
-            speed = 2.5f;
-            transform.Translate(Vector3.forward * Time.deltaTime * speed);
-            Debug.Log("cacs");
-        }
-
-        else if (!Input.GetKey(KeyCode.LeftControl) && (!Input.GetKey(KeyCode.LeftShift)))
-        {
-            speed = 1.9f;
-        }
-
-
-        if (Input.GetKey(KeyCode.S))
-
-            transform.Translate(-1 * Vector3.forward * Time.deltaTime * speed);
-
-        if (Input.GetKey(KeyCode.A))
-            transform.Translate(Vector3.left * Time.deltaTime * speed);
-
-        if (Input.GetKey(KeyCode.D))
-            transform.Translate(Vector3.right * Time.deltaTime * speed);
-
-        if (Input.GetButtonDown("Jump") && canJump)
-        {
-            canJump = false;
-            gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 250f, 0));
-            playerC.Play("Jump");
-        }
-
-        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.W))
-        {
-            speed = 0.8f;      
-        }
-        else if (!Input.GetKey(KeyCode.LeftControl) && (!Input.GetKey(KeyCode.LeftShift)))
-        {
-            speed = 1.9f;
-        }
+       
         /*if(Input.GetKey(KeyCode.LeftControl) && !isCrouched)
         {
             isCrouched = true;

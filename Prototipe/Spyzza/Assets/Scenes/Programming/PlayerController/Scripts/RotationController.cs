@@ -8,6 +8,7 @@ public class RotationController : MonoBehaviour
     public float RotationSpeed = 1;
     public Transform Target, Player;
     float mouseX, mouseY;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -26,19 +27,17 @@ public class RotationController : MonoBehaviour
     {
         mouseX += Input.GetAxis("Mouse X") * RotationSpeed;
         mouseY += Input.GetAxis("Mouse Y") * RotationSpeed;
-        mouseY = Mathf.Clamp(mouseY, -20, 60);
+        mouseY = Mathf.Clamp(mouseY, -20, 50);
 
         transform.LookAt(Target);
 
-        if (Input.GetKey(KeyCode.LeftAlt))
+        if (!player.GetComponent<ActionController>().isActionActive)
         {
-            Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
-        }
-        else
-        {
-            Target.rotation = Quaternion.Euler(mouseY/2, mouseX, 0);
+            Target.rotation = Quaternion.Euler(mouseY / 2, mouseX, 0);
             Player.rotation = Quaternion.Euler(0, mouseX, 0);
         }
+        
+       
     }
 
 

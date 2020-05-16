@@ -10,6 +10,7 @@ public class AlarmManager : MonoBehaviour
     public GameObject[] pins;
     public GameObject canvasGameOver;
     public GameObject canvasWin;
+    public GameObject canvasAlarm;
     //public Animator animatorCamera;
     
 
@@ -22,9 +23,20 @@ public class AlarmManager : MonoBehaviour
             canvasWin.SetActive(false);
         }
         
-        if(Score.PinCount >= 10)
+        if(Score.PinCount >= 3)
         {
             WinGame();
+        }
+
+        if(gameHasEnded)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
@@ -54,6 +66,20 @@ public class AlarmManager : MonoBehaviour
         Score.PinCount = 0;      
     }
 
+    public void BackGame()
+    {
+        gameHasEnded = false; ;
+        rotator.enabled = true;
+        spawner.enabled = true;
+        rotator.speed = 180;
+        GameObject.FindGameObjectsWithTag("Pin");
+        foreach (GameObject pin in pins)
+            Destroy(pin);
+        //animatorCamera.SetTrigger("RestartGame");
+        Score.PinCount = 0;
+        canvasAlarm.SetActive(false);
+    }
+
     public void WinGame()
     {
         if (gameHasEnded)
@@ -65,5 +91,7 @@ public class AlarmManager : MonoBehaviour
         //animatorCamera.SetTrigger("WinGame");
         gameHasEnded = true;
         canvasWin.SetActive(true);
+        GameManager.alarmDisconnected = true;
+        GameManager.alarmActivated = false;
     }
 }
