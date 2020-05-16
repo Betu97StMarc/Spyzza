@@ -13,6 +13,11 @@ TagManager:
   - Escalar
   - EscalarReuniones
   - EscalarCajaFuerte
+  - Taza
+  - CogerTaza
+  - CogerPostIt
+  - CogerAzul
+  - PuertaFinal
   layers:
   - Default
   - TransparentFX
@@ -25,7 +30,7 @@ TagManager:
   - PostProcessing
   - Obstacle
   - Player
-  - 
+  - Enemy
   - 
   - 
   - 

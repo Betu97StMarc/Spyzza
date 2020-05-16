@@ -5,10 +5,16 @@ using UnityEngine;
 public class ActionController : Singleton<ActionController>
 {
     public bool isActionActive;
+    public bool isToastActive;
+    public bool isSafe;
     private string tag_name_function;
-    private float time_action;
+    public float time_action;
     public  float time_change_location;
     public  float time_change_location_2;
+    public  float time_toast;
+    public  GameObject mug;
+    public  GameObject blueCard;
+    public  GameObject greenCard;
     private bool isShowedToastWindows;
     
 
@@ -27,15 +33,37 @@ public class ActionController : Singleton<ActionController>
             time_action -= Time.deltaTime;
             time_change_location -= Time.deltaTime;
             time_change_location_2 -= Time.deltaTime;
+            if (isToastActive)
+            {
+                time_toast += Time.deltaTime;
+                if(isSafe)
+                {
+                    if(time_toast >= 6)
+                    {
+                        Debug.Log("toast?");
+                        GameManager.Instance.MessageRedCardCollected();
+                        isToastActive = false;
+                        isSafe = false;
+                        time_toast = 0;
+                        this.GetComponent<Player>().redCard = true;
+                    }
+                }
+            }
             if (time_change_location <= 0)
             {
-                Debug.Log("xq no cambio");
+                
                 transform.position = new Vector3(29.98f, -13, -11.49f);
             }
+
 
             if (time_change_location_2 <= 0)
             {
                 transform.position = new Vector3(38.7f, -13, -10.83f);
+            }
+
+            if (time_toast <= 0)
+            {
+                time_toast = 0;
             }
 
             if (time_action <= 0)
@@ -54,25 +82,26 @@ public class ActionController : Singleton<ActionController>
                 time_change_location_2 = 0;
             }
 
-            if (tag_name_function == "CajaFuerte")
-            {
-                ActionCajaFuerte();
-            }
-            else if(tag_name_function == "DisconnectAlarm")
-            {
-                ActionDisconnectAlarm();
-            }
-            else if (tag_name_function == "EscalarReuniones")
-            {
-                ActionDisconnectAlarm();
-                
-            }
-            else if (tag_name_function == "EscalarCajaFuerte")
-            {
-                ActionDisconnectAlarm();
-                
-            }
+            
 
+        }
+    }
+
+    public void StealGreenCard()
+    {
+        if (!this.GetComponent<Player>().greenCard)
+        {
+            this.GetComponent<Animator>().Play("CogerTaza");
+            this.GetComponent<Player>().greenCard = true;
+            time_action = 1;
+            time_change_location = 20;
+            time_change_location_2 = 20;
+            isActionActive = true;
+            greenCard.SetActive(false);
+        }
+        else
+        {
+            GameManager.Instance.MessageGreenCardCollected();
         }
     }
 
@@ -80,38 +109,120 @@ public class ActionController : Singleton<ActionController>
     {
         if (tag_collider == "CajaFuerte")
         {
-            if(this.GetComponent<Player>().postIt)
+            if (this.GetComponent<Player>().redCard == false)
             {
-                this.GetComponent<Animator>().Play("Caja Fuerte");
-                time_action = 6;
-                isActionActive = true;
-
+                if (this.GetComponent<Player>().postIt)
+                {
+                    this.GetComponent<Animator>().Play("Caja Fuerte");
+                    time_action = 7;
+                    isActionActive = true;
+                    time_change_location = 20;
+                    time_change_location_2 = 20;
+                    time_toast = 0;
+                    isToastActive = true;
+                    isSafe = true;
+                }
+                else
+                {
+                    GameManager.Instance.MessageSafe();
+                }
             }
             else
             {
-                GameManager.Instance.MessageSafe();
+                GameManager.Instance.MessageRedCardCollected();
             }
         }
 
         if (tag_collider == "EscalarReuniones")
         {
-            this.GetComponent<Animator>().Play("Escalar");
-            time_action = 6;
+            this.GetComponent<Animator>().Play("Escalar");           
+            time_action = 5;
             time_change_location = 5;
-            time_change_location_2 = 10;
-            isActionActive = true;
-            
+            time_change_location_2 = 15;
+            isActionActive = true;            
         }
 
         if (tag_collider == "EscalarCajaFuerte")
         {
             this.GetComponent<Animator>().Play("Escalar");
-            time_action = 6;
-            time_change_location = 10;
+            time_action = 5;
+            time_change_location = 15;
             time_change_location_2 = 5;
-            isActionActive = true;
-            
+            isActionActive = true;            
         }
+
+        if (tag_collider == "CogerTaza")
+        {
+            if (!this.GetComponent<Player>().mug)
+            {
+                this.GetComponent<Animator>().Play("CogerTaza");
+                this.GetComponent<Player>().mug = true;
+                time_action = 1;
+                time_change_location = 20;
+                time_change_location_2 = 20;
+                isActionActive = true;
+                mug.SetActive(false);
+            }
+            else
+            {
+                GameManager.Instance.MessageMugCollected();
+            }
+        }
+
+        if (tag_collider == "CogerPostIt")
+        {
+            if (!this.GetComponent<Player>().postIt)
+            {
+                this.GetComponent<Animator>().Play("CogerTaza");
+                this.GetComponent<Player>().postIt = true;
+                time_action = 1;
+                time_change_location = 20;
+                time_change_location_2 = 20;
+                isActionActive = true;
+                mug.SetActive(false);
+            }
+            else
+            {
+                GameManager.Instance.MessagePostIt();
+            }
+        }
+
+        if (tag_collider == "CogerAzul")
+        {
+            if (!this.GetComponent<Player>().blueCard)
+            {
+                this.GetComponent<Animator>().Play("CogerTaza");
+                this.GetComponent<Player>().blueCard = true;
+                time_action = 1;
+                time_change_location = 20;
+                time_change_location_2 = 20;
+                isActionActive = true;
+                blueCard.SetActive(false);
+            }
+            else
+            {
+                GameManager.Instance.MessageBlueCardCollected();
+            }
+        }
+
+        if (tag_collider == "PuertaFinal")
+        {
+            if (this.GetComponent<Player>().redCard && this.GetComponent<Player>().blueCard && this.GetComponent<Player>().greenCard)
+            {
+                this.GetComponent<Animator>().Play("IntroducirTarjeta");
+                GameManager.Instance.winCanvas.SetActive(true);
+                time_action = 3;
+                time_change_location = 20;
+                time_change_location_2 = 20;
+                isActionActive = true;
+                
+            }
+            else
+            {
+                GameManager.Instance.MessageFinalDoor();
+            }
+        }
+
 
         if (tag_collider == "DisconnectAlarm")
         {

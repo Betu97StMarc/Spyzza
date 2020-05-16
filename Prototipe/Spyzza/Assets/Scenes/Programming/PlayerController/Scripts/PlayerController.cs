@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
         playerC.SetFloat("Vertical", y);
         playerC.SetFloat("Speed", speed);
 
-        if (!this.GetComponent<ActionController>().isActionActive)
+        if (!this.GetComponent<ActionController>().isActionActive && this.GetComponent<Player>().alive)
         {
             if (Input.GetKey(KeyCode.W))
             {
@@ -64,7 +64,6 @@ public class PlayerController : MonoBehaviour
             {
                 canJump = false;
                 gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 250f, 0));
-                playerC.Play("Jump");
             }
         }
        

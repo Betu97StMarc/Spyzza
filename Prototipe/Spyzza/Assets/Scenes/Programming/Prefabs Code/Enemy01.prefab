@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 305232098154706683}
   - component: {fileID: 305232098154706686}
   - component: {fileID: 1292003850573425558}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enemy01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,6 +102,7 @@ MonoBehaviour:
   lookArround: {fileID: 7400000, guid: fe8150a6457d3494a87a826420a13922, type: 2}
   next: 0
   lastKnown: {x: 0, y: 0, z: 0}
+  holdsObject: 0
   ObstacleMask:
     serializedVersion: 2
     m_Bits: 512

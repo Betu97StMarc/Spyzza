@@ -9,24 +9,26 @@ public class Player : MonoBehaviour
     public bool alarm;
     public bool mug;
     public bool postIt;
-    public bool card1;
-    public bool card2;
-    public bool card3;
+    public bool redCard;
+    public bool blueCard;
+    public bool greenCard;
+    public LayerMask enemyMask;
     //public Text xT;
     //public Text yT;
     //public Text zT;
     public static Vector3 position;
     public static Vector3 startPosition;
+    private Collider[] enemyCollider;
 
     public void Awake()
     {
         alive = true;
         alarm = false;
         mug = false;
-        postIt = false;
-        card1 = false;
-        card2 = false;
-        card3 = false;
+        postIt = true;
+        redCard = false;
+        blueCard = false;
+        greenCard = false;
         
     }
     public void Update()
@@ -35,6 +37,43 @@ public class Player : MonoBehaviour
         //yT.text = gameObject.transform.position.y.ToString();
         //zT.text = gameObject.transform.position.z.ToString();
         position = transform.position;
+        enemyCollider = Physics.OverlapSphere(gameObject.transform.position, 3, enemyMask);
+
+        if (enemyCollider.Length > 0)
+        {
+            Debug.Log("s'ha torbat un enemic");
+            if (Input.GetKey(KeyCode.E))
+            {
+                Steal();
+            }
+        }
+        
+       
+    }
+
+    public void Steal()
+    {
+        for (int i = 0; i < enemyCollider.Length; i++)
+        {
+            FindEM x = enemyCollider[i].GetComponent<FindEM>();
+            if (x.holdsObject && !x.canSee)
+            {
+                if (!this.GetComponent<Player>().greenCard)
+                {
+                    this.GetComponent<Animator>().Play("CogerTaza");
+                    this.GetComponent<Player>().greenCard = true;
+                    this.GetComponent<ActionController>().time_action = 1;
+                    this.GetComponent<ActionController>().time_change_location = 20;
+                    this.GetComponent<ActionController>().time_change_location_2 = 20;
+                    this.GetComponent<ActionController>().isActionActive = true;
+                    this.GetComponent<ActionController>().greenCard.SetActive(false);
+                }
+                else
+                {
+                    GameManager.Instance.MessageGreenCardCollected();
+                }
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -63,9 +102,34 @@ public class Player : MonoBehaviour
             GameManager.Instance.SetTagCollidingObject(other.tag);
         }
 
+        if (other.tag == "CogerTaza")
+        {
+            GameManager.Instance.setIsThePlayerColliding(true);
+            GameManager.Instance.SetTagCollidingObject(other.tag);
+        }
+
+        if (other.tag == "CogerPostIt")
+        {
+            GameManager.Instance.setIsThePlayerColliding(true);
+            GameManager.Instance.SetTagCollidingObject(other.tag);
+        }
+
+        if (other.tag == "CogerAzul")
+        {
+            GameManager.Instance.setIsThePlayerColliding(true);
+            GameManager.Instance.SetTagCollidingObject(other.tag);
+        }
+
+        if (other.tag == "PuertaFinal")
+        {
+            GameManager.Instance.setIsThePlayerColliding(true);
+            GameManager.Instance.SetTagCollidingObject(other.tag);
+        }
+
         if (other.tag == "Rumba")
         {
             alive = false;
+            this.GetComponent<Animator>().Play("Electrocuted");
         }
     }
 
@@ -74,22 +138,51 @@ public class Player : MonoBehaviour
         if (other.tag == "DisconnectAlarm")
         {
             GameManager.Instance.setIsThePlayerColliding(false);
+            GameManager.Instance.UpdateInteractPanel();
         }
 
         if (other.tag == "EscalarReuniones")
         {
             GameManager.Instance.setIsThePlayerColliding(false);
+            GameManager.Instance.UpdateInteractPanel();
         }
 
         if (other.tag == "EscalarCajaFuerte")
         {
             GameManager.Instance.setIsThePlayerColliding(false);
+            GameManager.Instance.UpdateInteractPanel();
         }
 
         if (other.tag == "CajaFuerte")
         {
             GameManager.Instance.setIsThePlayerColliding(false);
+            GameManager.Instance.UpdateInteractPanel();
         }
+
+        if (other.tag == "CogerTaza")
+        {
+            GameManager.Instance.setIsThePlayerColliding(false);
+            GameManager.Instance.UpdateInteractPanel();
+        }
+
+        if (other.tag == "CogerPostIt")
+        {
+            GameManager.Instance.setIsThePlayerColliding(false);
+            GameManager.Instance.UpdateInteractPanel();
+        }
+
+        if (other.tag == "CogerAzul")
+        {
+            GameManager.Instance.setIsThePlayerColliding(false);
+            GameManager.Instance.UpdateInteractPanel();
+        }
+
+        if (other.tag == "PuertaFinal")
+        {
+            GameManager.Instance.setIsThePlayerColliding(false);
+            GameManager.Instance.UpdateInteractPanel();
+        }
+
     }
 
 

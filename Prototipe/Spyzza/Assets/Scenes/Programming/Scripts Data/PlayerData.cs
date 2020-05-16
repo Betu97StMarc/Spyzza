@@ -11,9 +11,9 @@ public class PlayerData
     public bool alarm;
     public bool mug;
     public bool postIt;
-    public bool card1;
-    public bool card2;
-    public bool card3;
+    public bool redCard;
+    public bool blueCard;
+    public bool greenCard;
     public float[] position;
 
     /*
@@ -29,9 +29,9 @@ public class PlayerData
         alarm = player.alarm;
         mug = player.mug;
         postIt = player.postIt;
-        card1 = player.card1;
-        card2 = player.card2;
-        card3 = player.card3;
+        redCard = player.redCard;
+        blueCard = player.blueCard;
+        greenCard = player.greenCard;
         position = new float[3];
         position[0] = player.transform.position.x;
         position[1] = player.transform.position.y;
