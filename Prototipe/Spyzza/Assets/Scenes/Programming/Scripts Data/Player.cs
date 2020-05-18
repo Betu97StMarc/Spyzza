@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
         alive = true;
         alarm = false;
         mug = false;
-        postIt = true;
+        postIt = false;
         redCard = false;
         blueCard = false;
         greenCard = false;

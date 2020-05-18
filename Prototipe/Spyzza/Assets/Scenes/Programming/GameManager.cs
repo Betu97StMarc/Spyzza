@@ -14,6 +14,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject alarmCanvas;
     public GameObject gameOverCanvas;
     public GameObject winCanvas;
+    public Vector3 startPosition;
     public static bool alarmDisconnected;
     public static bool alarmActivated;
     public float alarmTimer = 120;
@@ -38,7 +39,7 @@ public class GameManager : Singleton<GameManager>
 
 
     // PRIVATE ATRIBUTES
-    private Vector3 startPosition;
+   // private Vector3 startPosition;
     private string tag_collidingObject;
     private bool isThePlayerColliding;
 
@@ -47,6 +48,7 @@ public class GameManager : Singleton<GameManager>
     // Start is called before the first frame update
     void Start()
     {
+        startPosition = new Vector3(61, -13, 18);
         alarmDisconnected = false;
         //timerText.enabled = false;
     }
@@ -258,7 +260,7 @@ public class GameManager : Singleton<GameManager>
 
     public void Restart()
     {
-        player.GetComponent<Player>().LoadPlayer();
+        player.transform.position = startPosition;
         alarmTimer = 120;
         alarmActivated = false;
         player.GetComponent<Player>().alive = true;
