@@ -33,7 +33,7 @@ public class RotationController : MonoBehaviour
 
         if (!player.GetComponent<ActionController>().isActionActive)
         {
-            Target.rotation = Quaternion.Euler(mouseY / 2, mouseX, 0);
+            Target.rotation = Quaternion.Euler(-1 * mouseY / 2, mouseX, 0);
             Player.rotation = Quaternion.Euler(0, mouseX, 0);
         }
         
