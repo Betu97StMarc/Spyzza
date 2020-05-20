@@ -19,7 +19,7 @@ public class ActionController : Singleton<ActionController>
     
 
 
-    // Start is called before the first frame update
+    // Start is called before the first frame updatee
     void Start()
     {
 

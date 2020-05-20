@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 1f;
+    public float speed = 2.5f;
     public bool canJump;
     public bool isCrouched;    
     public Animator playerC;
@@ -40,13 +40,13 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
             {
-                speed = 2.5f;
+                speed = 1f;
                 transform.Translate(Vector3.forward * Time.deltaTime * speed);
             }
 
             else if (!Input.GetKey(KeyCode.LeftControl) && (!Input.GetKey(KeyCode.LeftShift)))
             {
-                speed = 1.9f;
+                speed = 2.5f;
             }
 
 
