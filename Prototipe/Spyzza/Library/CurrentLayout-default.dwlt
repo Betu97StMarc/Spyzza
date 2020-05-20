@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -46,7 +46,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 881, y: 492}
   m_MaxSize: {x: 16006, y: 14042}
   vertical: 0
-  controlID: 607
+  controlID: 136
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 605, y: 492}
   m_MaxSize: {x: 12005, y: 14042}
   vertical: 1
-  controlID: 608
+  controlID: 137
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 605, y: 221}
   m_MaxSize: {x: 12005, y: 4021}
   vertical: 0
-  controlID: 609
+  controlID: 138
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -419,9 +419,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 92f20000
-      m_LastClickedID: 62098
-      m_ExpandedIDs: aabafeffcacdfeff4ce0feff500affffe8bc0000ecc0000060c1000072cb000090e90000f0f700001af80000
+      m_SelectedIDs: 8caa0000
+      m_LastClickedID: 43660
+      m_ExpandedIDs: a4e3feff1ef6feff8a0affff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -483,7 +483,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: 55.553516, y: -9.81775, z: 14.584719}
     speed: 2
-    m_Value: {x: 55.50308, y: -9.916012, z: 14.5683975}
+    m_Value: {x: 55.553516, y: -9.81775, z: 14.584719}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -531,11 +531,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.15006918, y: -0.48411056, z: 0.10112053, w: 0.8561668}
     speed: 2
-    m_Value: {x: 0.14952382, y: -0.47779405, z: 0.09926893, w: 0.8599426}
+    m_Value: {x: -0.15006919, y: 0.48411056, z: -0.10112053, w: -0.8561668}
   m_Size:
-    m_Target: 10.057175
+    m_Target: 11.476907
     speed: 2
-    m_Value: 9.62409
+    m_Value: 10.982686
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -605,14 +605,14 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Scenes/LevelDesign
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: D:\SPYZZA\Spyzza\Prototipe\Spyzza
+  m_LastProjectPath: D:\Desktop\Github\Spyzza\Prototipe\Spyzza
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 3ea80000
-    m_LastClickedID: 43070
-    m_ExpandedIDs: 00000000de870000e0870000e2870000e4870000e6870000e8870000ea870000ec870000ee870000f0870000f2870000f4870000f687000000ca9a3b
+    scrollPos: {x: 0, y: 199}
+    m_SelectedIDs: 38880000
+    m_LastClickedID: 34872
+    m_ExpandedIDs: 00000000f6870000f8870000fa870000fc870000fe87000000880000028800000488000006880000088800000a8800000c8800000e88000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -640,7 +640,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000de870000e0870000e2870000e4870000e6870000e8870000ea870000ec870000ee870000f0870000f2870000f4870000f6870000
+    m_ExpandedIDs: 00000000f6870000f8870000fa870000fc870000fe87000000880000028800000488000006880000088800000a8800000c8800000e880000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
