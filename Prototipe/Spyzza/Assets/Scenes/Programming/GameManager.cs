@@ -34,14 +34,15 @@ public class GameManager : Singleton<GameManager>
     public Toggle blueCard;
     public Toggle greenCard;
     public FindEM[] enemys;
-
+    public bool isInside;
 
 
 
     // PRIVATE ATRIBUTES
-   // private Vector3 startPosition;
+    // private Vector3 startPosition;
     private string tag_collidingObject;
     private bool isThePlayerColliding;
+    
 
 
 
@@ -56,79 +57,8 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
-        /*
-         * 
-         * UI UPDATE
-         *     
-         */
-
-        if (menuCanvas.activeSelf == true)
-        {
-            mainCanvas.SetActive(false);
-            gameOverCanvas.SetActive(false);
-            alarmCanvas.SetActive(false);
-            inventaryCanvas.SetActive(false);
-        }
-        else
-        {
-            mainCanvas.SetActive(true);
-        }
-
-        timerText.text = alarmTimer.ToString("#.00");
-
-        if (player.GetComponent<Player>().mug)
-        {
-            mug.isOn = true;
-        }
-        else
-        {
-            mug.isOn = false;
-        }
-
-        if (player.GetComponent<Player>().postIt)
-        {
-            postIt.isOn = true;
-        }
-        else
-        {
-            postIt.isOn = false;
-        }
-
-        if (player.GetComponent<Player>().redCard)
-        {
-            redCard.isOn = true;
-        }
-        else
-        {
-            redCard.isOn = false;
-        }
-
-        if (player.GetComponent<Player>().blueCard)
-        {
-            blueCard.isOn = true;
-        }
-        else
-        {
-            blueCard.isOn = false;
-        }
-
-        if (player.GetComponent<Player>().greenCard)
-        {
-            greenCard.isOn = true;
-        }
-        else
-        {
-            greenCard.isOn = false;
-        }
-
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            inventaryCanvas.SetActive(true);
-        }
-        else if (Input.GetKeyUp(KeyCode.I))
-        {
-            inventaryCanvas.SetActive(false);
-        }
+        UpdateUI();
+        
 
         /*
          * 
@@ -147,9 +77,6 @@ public class GameManager : Singleton<GameManager>
         {
             player.GetComponent<Player>().LoadPlayer();
         }
-        */
-
-
 
         if (Input.GetKey(KeyCode.L))
         {
@@ -163,6 +90,8 @@ public class GameManager : Singleton<GameManager>
             }
 
         }
+        */
+
 
         if (isThePlayerColliding)
         {
@@ -238,6 +167,77 @@ public class GameManager : Singleton<GameManager>
 
     }
 
+    public void UpdateUI()
+    {
+        if (menuCanvas.activeSelf == true)
+        {
+            mainCanvas.SetActive(false);
+            gameOverCanvas.SetActive(false);
+            alarmCanvas.SetActive(false);
+            inventaryCanvas.SetActive(false);
+        }
+        else
+        {
+            mainCanvas.SetActive(true);
+        }
+
+        timerText.text = alarmTimer.ToString("#.00");
+
+        if (player.GetComponent<Player>().mug)
+        {
+            mug.isOn = true;
+        }
+        else
+        {
+            mug.isOn = false;
+        }
+
+        if (player.GetComponent<Player>().postIt)
+        {
+            postIt.isOn = true;
+        }
+        else
+        {
+            postIt.isOn = false;
+        }
+
+        if (player.GetComponent<Player>().redCard)
+        {
+            redCard.isOn = true;
+        }
+        else
+        {
+            redCard.isOn = false;
+        }
+
+        if (player.GetComponent<Player>().blueCard)
+        {
+            blueCard.isOn = true;
+        }
+        else
+        {
+            blueCard.isOn = false;
+        }
+
+        if (player.GetComponent<Player>().greenCard)
+        {
+            greenCard.isOn = true;
+        }
+        else
+        {
+            greenCard.isOn = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            inventaryCanvas.SetActive(true);
+        }
+        else if (Input.GetKeyUp(KeyCode.I))
+        {
+            inventaryCanvas.SetActive(false);
+        }
+    }
+
     public void GoGame()
     {
         menuCanvas.SetActive(false);
@@ -271,7 +271,8 @@ public class GameManager : Singleton<GameManager>
         player.GetComponent<Player>().blueCard = false;
         player.GetComponent<Player>().greenCard = false;
         player.GetComponent<ActionController>().mug.SetActive(true);
-        player.GetComponent<Animator>().Play("Blend Tree");
+        player.GetComponent<Animator>().Play("Blend Tree Correr");
+        player.GetComponent<Animator>().SetBool("Death", false);
         alarmCanvas.SetActive(false);
         winCanvas.SetActive(false);
         foreach (FindEM x in enemys)
@@ -288,6 +289,7 @@ public class GameManager : Singleton<GameManager>
     public void GameOver()
     {
         player.GetComponent<Player>().alive = false;
+        player.GetComponent<Animator>().SetBool ("Death",true);
     }
 
     public void setIsThePlayerColliding(bool new_state)
@@ -367,6 +369,12 @@ public class GameManager : Singleton<GameManager>
     public void ActivateFinalDoor()
     {
         SetTagCollidingObject("PuertaFinal");
+        CallAnalyseActionCollider();
+    }
+
+    public void ActivateOffice()
+    {
+        SetTagCollidingObject("Taquilla");
         CallAnalyseActionCollider();
     }
 

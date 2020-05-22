@@ -126,6 +126,12 @@ public class Player : MonoBehaviour
             GameManager.Instance.SetTagCollidingObject(other.tag);
         }
 
+        if (other.tag == "Taquilla")
+        {
+            GameManager.Instance.setIsThePlayerColliding(true);
+            GameManager.Instance.SetTagCollidingObject(other.tag);
+        }
+
         if (other.tag == "Rumba")
         {
             alive = false;
@@ -178,6 +184,12 @@ public class Player : MonoBehaviour
         }
 
         if (other.tag == "PuertaFinal")
+        {
+            GameManager.Instance.setIsThePlayerColliding(false);
+            GameManager.Instance.UpdateInteractPanel();
+        }
+
+        if (other.tag == "Taquilla")
         {
             GameManager.Instance.setIsThePlayerColliding(false);
             GameManager.Instance.UpdateInteractPanel();

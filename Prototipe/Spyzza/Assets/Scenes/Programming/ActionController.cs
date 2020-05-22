@@ -238,6 +238,21 @@ public class ActionController : Singleton<ActionController>
                 
             }
         }
+
+        if (tag_collider == "Taquilla")
+        {
+           
+            if (GameManager.Instance.isInside)
+            {
+                this.GetComponent<Animator>().SetTrigger("SalirTaquilla");
+                GameManager.Instance.isInside = false;
+            }
+            else
+            {
+                this.GetComponent<Animator>().SetTrigger("EntrarTaquilla");
+                GameManager.Instance.isInside = true;
+            }
+        }
     }
 
     public void ActionCajaFuerte()
