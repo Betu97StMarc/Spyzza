@@ -1340,7 +1340,7 @@ PrefabInstance:
     - target: {fileID: 8610030757483693919, guid: 8db45abc9ccc849439d6c724ae3d2406,
         type: 3}
       propertyPath: m_Name
-      value: Taser (1)
+      value: Taser
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8db45abc9ccc849439d6c724ae3d2406, type: 3}
