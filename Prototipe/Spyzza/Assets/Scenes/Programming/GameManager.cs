@@ -28,11 +28,11 @@ public class GameManager : Singleton<GameManager>
     public GameObject camera3B;
     public Light camera4L;
     public GameObject camera4B;
-    public Toggle mug;
-    public Toggle postIt;
-    public Toggle redCard;
-    public Toggle blueCard;
-    public Toggle greenCard;
+    public bool mug;
+    public bool postIt;
+    public bool redCard;
+    public bool blueCard;
+    public bool greenCard;
     public FindEM[] enemys;
     public bool isInside;
 
@@ -185,47 +185,47 @@ public class GameManager : Singleton<GameManager>
 
         if (player.GetComponent<Player>().mug)
         {
-            mug.isOn = true;
+            mug = true;
         }
         else
         {
-            mug.isOn = false;
+            mug = false;
         }
 
         if (player.GetComponent<Player>().postIt)
         {
-            postIt.isOn = true;
+            postIt = true;
         }
         else
         {
-            postIt.isOn = false;
+            postIt = false;
         }
 
         if (player.GetComponent<Player>().redCard)
         {
-            redCard.isOn = true;
+            redCard = true;
         }
         else
         {
-            redCard.isOn = false;
+            redCard = false;
         }
 
         if (player.GetComponent<Player>().blueCard)
         {
-            blueCard.isOn = true;
+            blueCard = true;
         }
         else
         {
-            blueCard.isOn = false;
+            blueCard = false;
         }
 
         if (player.GetComponent<Player>().greenCard)
         {
-            greenCard.isOn = true;
+            greenCard = true;
         }
         else
         {
-            greenCard.isOn = false;
+            greenCard = false;
         }
 
         if (Input.GetKeyDown(KeyCode.I))
