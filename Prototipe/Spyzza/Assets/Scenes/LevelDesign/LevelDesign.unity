@@ -25048,7 +25048,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: 984aa30436af86e4da5c634cc3bfffd9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25723,13 +25723,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371616193}
-  m_LocalRotation: {x: -0.3464448, y: -0.644803, z: 0.4593794, w: -0.50316566}
-  m_LocalPosition: {x: -0.69172347, y: 2.115547, z: 2.5460756}
+  m_LocalRotation: {x: -0.50472933, y: -0.39120245, z: 0.6891892, w: -0.34238473}
+  m_LocalPosition: {x: 1.0599985, y: 2.1155431, z: 1.9669535}
   m_LocalScale: {x: 0.32021073, y: 0.27617428, z: 0.36160645}
   m_Children: []
   m_Father: {fileID: 1702038036}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 70.23, y: -257.781, z: -362.628}
+  m_LocalEulerAnglesHint: {x: 117.767, y: -246.681, z: -350.482}
 --- !u!114 &1371616195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25750,7 +25750,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 50
+  m_Intensity: 20
   m_EnableSpotReflector: 0
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -25852,7 +25852,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 3.9788735
+  m_Intensity: 1.5915494
   m_Range: 5.3
   m_SpotAngle: 56.31
   m_InnerSpotAngle: 1
@@ -31719,7 +31719,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d5187a5b0c0daf0458f494430c2caa2b, type: 2}
+  - {fileID: 2100000, guid: 984aa30436af86e4da5c634cc3bfffd9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
