@@ -10,6 +10,7 @@ public class GameManager : Singleton<GameManager>
     public Player player;
     public GameObject mainCanvas;
     public GameObject menuCanvas;
+    public GameObject optionsCanvas;
     public GameObject inventaryCanvas;
     public GameObject alarmCanvas;
     public GameObject gameOverCanvas;
@@ -159,11 +160,17 @@ public class GameManager : Singleton<GameManager>
             timerText.enabled = false;
         }
 
-        if (gameOverCanvas.activeSelf == true || menuCanvas.activeSelf == true || winCanvas.activeSelf == true)
+        if (gameOverCanvas.activeSelf == true || menuCanvas.activeSelf == true || winCanvas.activeSelf == true || optionsCanvas.activeSelf == true)
         {
             Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.None;            
         }
+        else
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        
 
     }
 
@@ -253,6 +260,12 @@ public class GameManager : Singleton<GameManager>
         Restart();
     }
 
+    public void GoOptions()
+    {
+        menuCanvas.SetActive(false);
+        optionsCanvas.SetActive(true);
+    }
+
     public void ExitGame()
     {
         Application.Quit();
@@ -290,6 +303,7 @@ public class GameManager : Singleton<GameManager>
     {
         player.GetComponent<Player>().alive = false;
         player.GetComponent<Animator>().SetBool ("Death",true);
+        
     }
 
     public void setIsThePlayerColliding(bool new_state)
