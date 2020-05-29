@@ -18,6 +18,9 @@ TagManager:
   - CogerPostIt
   - CogerAzul
   - PuertaFinal
+  - Laser1
+  - Laser2
+  - Laser3
   layers:
   - Default
   - TransparentFX

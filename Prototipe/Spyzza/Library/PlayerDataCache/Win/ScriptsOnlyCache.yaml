@@ -7,14 +7,19 @@ ScriptsOnlyBuild:
     - FieldOfView
     - FindEM
     - GameManager
+    - Inventary
+    - LoadSceneAfterVideoEnded
     - Pin
     - Player
     - PlayerController
     - RotationController
     - Rotator
     - Score
+    - SettingMenu
     - Spawner
     - Toast
+    Unity.RenderPipelines.Core.Editor.dll:
+    - UnityEditor.Rendering.VolumeProfileEditor
     Unity.RenderPipelines.Core.Runtime.dll:
     - UnityEngine.Rendering.UI.DebugUIHandlerBitField
     - UnityEngine.Rendering.UI.DebugUIHandlerButton
@@ -62,6 +67,7 @@ ScriptsOnlyBuild:
     - UnityEngine.Rendering.HighDefinition.HDShadowSettings
     - UnityEngine.Rendering.HighDefinition.MotionBlur
     - UnityEngine.Rendering.HighDefinition.PhysicallyBasedSky
+    - UnityEngine.Rendering.HighDefinition.PlanarReflectionProbe
     - UnityEngine.Rendering.HighDefinition.RenderPipelineResources
     - UnityEngine.Rendering.HighDefinition.ScreenSpaceReflection
     - UnityEngine.Rendering.HighDefinition.Tonemapping
@@ -71,6 +77,7 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationBlendTree.Node
     - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
@@ -86,6 +93,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.ContentSizeFitter
+    - UnityEngine.UI.Dropdown
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.HorizontalLayoutGroup
     - UnityEngine.UI.Image
@@ -94,11 +102,346 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.RawImage
     - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Scrollbar
+    - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
     - UnityEngine.UI.Toggle
     - UnityEngine.UI.VerticalLayoutGroup
   sceneClasses:
-    Assets/Scenes/LevelDesign/LevelDesign.unity:
+    Assets/Scenes/Programming/Ricard/Cinematic.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 84
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11370}
+    - Class: 114
+      Script: {instanceID: 11462}
+    - Class: 114
+      Script: {instanceID: 11676}
+    - Class: 114
+      Script: {instanceID: 11830}
+    - Class: 114
+      Script: {instanceID: 11932}
+    - Class: 114
+      Script: {instanceID: 12050}
+    - Class: 114
+      Script: {instanceID: 12572}
+    - Class: 114
+      Script: {instanceID: 12814}
+    - Class: 114
+      Script: {instanceID: 12994}
+    - Class: 114
+      Script: {instanceID: 13710}
+    - Class: 114
+      Script: {instanceID: 14028}
+    - Class: 114
+      Script: {instanceID: 14066}
+    - Class: 114
+      Script: {instanceID: 14108}
+    - Class: 114
+      Script: {instanceID: 15268}
+    - Class: 114
+      Script: {instanceID: 15914}
+    - Class: 114
+      Script: {instanceID: 16252}
+    - Class: 114
+      Script: {instanceID: 16286}
+    - Class: 114
+      Script: {instanceID: 16292}
+    - Class: 114
+      Script: {instanceID: 16400}
+    - Class: 114
+      Script: {instanceID: 229324}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    - Class: 328
+      Script: {instanceID: 0}
+    - Class: 329
+      Script: {instanceID: 0}
+    Assets/Scenes/Programming/Ricard/Extras.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 84
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11370}
+    - Class: 114
+      Script: {instanceID: 11462}
+    - Class: 114
+      Script: {instanceID: 11676}
+    - Class: 114
+      Script: {instanceID: 11830}
+    - Class: 114
+      Script: {instanceID: 11932}
+    - Class: 114
+      Script: {instanceID: 12050}
+    - Class: 114
+      Script: {instanceID: 12572}
+    - Class: 114
+      Script: {instanceID: 12814}
+    - Class: 114
+      Script: {instanceID: 12994}
+    - Class: 114
+      Script: {instanceID: 13710}
+    - Class: 114
+      Script: {instanceID: 14028}
+    - Class: 114
+      Script: {instanceID: 14066}
+    - Class: 114
+      Script: {instanceID: 14108}
+    - Class: 114
+      Script: {instanceID: 15268}
+    - Class: 114
+      Script: {instanceID: 15914}
+    - Class: 114
+      Script: {instanceID: 16252}
+    - Class: 114
+      Script: {instanceID: 16286}
+    - Class: 114
+      Script: {instanceID: 16292}
+    - Class: 114
+      Script: {instanceID: 16400}
+    - Class: 114
+      Script: {instanceID: 229324}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    - Class: 328
+      Script: {instanceID: 0}
+    - Class: 329
+      Script: {instanceID: 0}
+    Assets/Scenes/Programming/Ricard/Menu.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11370}
+    - Class: 114
+      Script: {instanceID: 11462}
+    - Class: 114
+      Script: {instanceID: 11530}
+    - Class: 114
+      Script: {instanceID: 11672}
+    - Class: 114
+      Script: {instanceID: 11676}
+    - Class: 114
+      Script: {instanceID: 11708}
+    - Class: 114
+      Script: {instanceID: 11830}
+    - Class: 114
+      Script: {instanceID: 11834}
+    - Class: 114
+      Script: {instanceID: 11932}
+    - Class: 114
+      Script: {instanceID: 12000}
+    - Class: 114
+      Script: {instanceID: 12050}
+    - Class: 114
+      Script: {instanceID: 12190}
+    - Class: 114
+      Script: {instanceID: 12250}
+    - Class: 114
+      Script: {instanceID: 12572}
+    - Class: 114
+      Script: {instanceID: 12722}
+    - Class: 114
+      Script: {instanceID: 12812}
+    - Class: 114
+      Script: {instanceID: 12814}
+    - Class: 114
+      Script: {instanceID: 12994}
+    - Class: 114
+      Script: {instanceID: 13138}
+    - Class: 114
+      Script: {instanceID: 13404}
+    - Class: 114
+      Script: {instanceID: 13462}
+    - Class: 114
+      Script: {instanceID: 13542}
+    - Class: 114
+      Script: {instanceID: 13678}
+    - Class: 114
+      Script: {instanceID: 13710}
+    - Class: 114
+      Script: {instanceID: 14028}
+    - Class: 114
+      Script: {instanceID: 14066}
+    - Class: 114
+      Script: {instanceID: 14096}
+    - Class: 114
+      Script: {instanceID: 14284}
+    - Class: 114
+      Script: {instanceID: 14494}
+    - Class: 114
+      Script: {instanceID: 14588}
+    - Class: 114
+      Script: {instanceID: 14610}
+    - Class: 114
+      Script: {instanceID: 14786}
+    - Class: 114
+      Script: {instanceID: 14834}
+    - Class: 114
+      Script: {instanceID: 14844}
+    - Class: 114
+      Script: {instanceID: 15250}
+    - Class: 114
+      Script: {instanceID: 15268}
+    - Class: 114
+      Script: {instanceID: 15334}
+    - Class: 114
+      Script: {instanceID: 15680}
+    - Class: 114
+      Script: {instanceID: 15882}
+    - Class: 114
+      Script: {instanceID: 15914}
+    - Class: 114
+      Script: {instanceID: 15948}
+    - Class: 114
+      Script: {instanceID: 16240}
+    - Class: 114
+      Script: {instanceID: 16244}
+    - Class: 114
+      Script: {instanceID: 16246}
+    - Class: 114
+      Script: {instanceID: 16252}
+    - Class: 114
+      Script: {instanceID: 16286}
+    - Class: 114
+      Script: {instanceID: 16292}
+    - Class: 114
+      Script: {instanceID: 16318}
+    - Class: 114
+      Script: {instanceID: 16322}
+    - Class: 114
+      Script: {instanceID: 16374}
+    - Class: 114
+      Script: {instanceID: 16400}
+    - Class: 114
+      Script: {instanceID: 16492}
+    - Class: 114
+      Script: {instanceID: 16498}
+    - Class: 114
+      Script: {instanceID: 281238}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    - Class: 241
+      Script: {instanceID: 0}
+    - Class: 243
+      Script: {instanceID: 0}
+    - Class: 245
+      Script: {instanceID: 0}
+    Assets/Scenes/Programming/Ricard/Ricard Boss.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    Assets/Scenes/Programming/Ricard/Ricard Planta1.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -146,140 +489,80 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11368}
+      Script: {instanceID: 11370}
     - Class: 114
-      Script: {instanceID: 11408}
+      Script: {instanceID: 11410}
     - Class: 114
-      Script: {instanceID: 11460}
+      Script: {instanceID: 11462}
     - Class: 114
-      Script: {instanceID: 11528}
+      Script: {instanceID: 11676}
     - Class: 114
-      Script: {instanceID: 11670}
+      Script: {instanceID: 11726}
     - Class: 114
-      Script: {instanceID: 11674}
+      Script: {instanceID: 11830}
     - Class: 114
-      Script: {instanceID: 11706}
+      Script: {instanceID: 11932}
     - Class: 114
-      Script: {instanceID: 11724}
-    - Class: 114
-      Script: {instanceID: 11828}
-    - Class: 114
-      Script: {instanceID: 11832}
-    - Class: 114
-      Script: {instanceID: 11930}
-    - Class: 114
-      Script: {instanceID: 11998}
-    - Class: 114
-      Script: {instanceID: 12048}
+      Script: {instanceID: 12050}
     - Class: 114
       Script: {instanceID: 12186}
     - Class: 114
-      Script: {instanceID: 12246}
+      Script: {instanceID: 12572}
     - Class: 114
-      Script: {instanceID: 12568}
+      Script: {instanceID: 12602}
     - Class: 114
-      Script: {instanceID: 12598}
+      Script: {instanceID: 12648}
     - Class: 114
-      Script: {instanceID: 12644}
+      Script: {instanceID: 12722}
     - Class: 114
-      Script: {instanceID: 12718}
+      Script: {instanceID: 12814}
     - Class: 114
-      Script: {instanceID: 12808}
+      Script: {instanceID: 12994}
     - Class: 114
-      Script: {instanceID: 12810}
+      Script: {instanceID: 13040}
     - Class: 114
-      Script: {instanceID: 12990}
+      Script: {instanceID: 13666}
     - Class: 114
-      Script: {instanceID: 13036}
+      Script: {instanceID: 13710}
     - Class: 114
-      Script: {instanceID: 13134}
+      Script: {instanceID: 13892}
     - Class: 114
-      Script: {instanceID: 13400}
+      Script: {instanceID: 14028}
     - Class: 114
-      Script: {instanceID: 13458}
+      Script: {instanceID: 14066}
     - Class: 114
-      Script: {instanceID: 13538}
+      Script: {instanceID: 14108}
     - Class: 114
-      Script: {instanceID: 13662}
+      Script: {instanceID: 14386}
     - Class: 114
-      Script: {instanceID: 13674}
+      Script: {instanceID: 14582}
     - Class: 114
-      Script: {instanceID: 13706}
+      Script: {instanceID: 14828}
     - Class: 114
-      Script: {instanceID: 13888}
+      Script: {instanceID: 14884}
     - Class: 114
-      Script: {instanceID: 14024}
+      Script: {instanceID: 15268}
     - Class: 114
-      Script: {instanceID: 14062}
+      Script: {instanceID: 15344}
     - Class: 114
-      Script: {instanceID: 14092}
+      Script: {instanceID: 15446}
     - Class: 114
-      Script: {instanceID: 14104}
+      Script: {instanceID: 15914}
     - Class: 114
-      Script: {instanceID: 14280}
+      Script: {instanceID: 16152}
     - Class: 114
-      Script: {instanceID: 14382}
+      Script: {instanceID: 16252}
     - Class: 114
-      Script: {instanceID: 14490}
+      Script: {instanceID: 16286}
     - Class: 114
-      Script: {instanceID: 14584}
-    - Class: 114
-      Script: {instanceID: 14606}
-    - Class: 114
-      Script: {instanceID: 14782}
-    - Class: 114
-      Script: {instanceID: 14824}
-    - Class: 114
-      Script: {instanceID: 14830}
-    - Class: 114
-      Script: {instanceID: 14840}
-    - Class: 114
-      Script: {instanceID: 14880}
-    - Class: 114
-      Script: {instanceID: 15246}
-    - Class: 114
-      Script: {instanceID: 15264}
-    - Class: 114
-      Script: {instanceID: 15330}
-    - Class: 114
-      Script: {instanceID: 15340}
-    - Class: 114
-      Script: {instanceID: 15442}
-    - Class: 114
-      Script: {instanceID: 15676}
-    - Class: 114
-      Script: {instanceID: 15878}
-    - Class: 114
-      Script: {instanceID: 15910}
-    - Class: 114
-      Script: {instanceID: 15944}
-    - Class: 114
-      Script: {instanceID: 16148}
-    - Class: 114
-      Script: {instanceID: 16240}
-    - Class: 114
-      Script: {instanceID: 16242}
-    - Class: 114
-      Script: {instanceID: 16248}
-    - Class: 114
-      Script: {instanceID: 16282}
-    - Class: 114
-      Script: {instanceID: 16288}
-    - Class: 114
-      Script: {instanceID: 16314}
+      Script: {instanceID: 16292}
     - Class: 114
       Script: {instanceID: 16318}
     - Class: 114
-      Script: {instanceID: 16396}
-    - Class: 114
-      Script: {instanceID: 16488}
-    - Class: 114
-      Script: {instanceID: 16494}
+      Script: {instanceID: 16400}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
-      Script: {instanceID: 0}
-    - Class: 135
       Script: {instanceID: 0}
     - Class: 136
       Script: {instanceID: 0}
@@ -508,6 +791,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: GridLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 823d96d32ce24af40da11e6bcf386a49
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Inventary
   - hash:
       serializedVersion: 2
       Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
@@ -1092,7 +1381,7 @@ ScriptsOnlyBuild:
     className: DebugUIHandlerFloatField
   - hash:
       serializedVersion: 2
-      Hash: e7702592ac97aa581e172174354fdd1e
+      Hash: ee1b91c842280d56433a25379b9512ee
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ActionController
@@ -1470,7 +1759,7 @@ ScriptsOnlyBuild:
     className: MicroShadowing
   - hash:
       serializedVersion: 2
-      Hash: 0dbc48a7a6ecc51c056f3c5a2307a87b
+      Hash: 2dd1c8f1089a490e6f20095fcde208ab
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -1522,7 +1811,23 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualEffectGraph.Runtime.dll
     namespaceName: UnityEngine.VFX.Utility
     className: VFXUISliderBinder
+  - hash:
+      serializedVersion: 2
+      Hash: 963a95ecf1317062f2250be6db755dee
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LoadSceneAfterVideoEnded
+  - hash:
+      serializedVersion: 2
+      Hash: 8b21061e9d037d307e029130da878344
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SettingMenu
   platform: 5
   scenePathNames:
-  - Assets/Scenes/LevelDesign/LevelDesign.unity
-  playerPath: D:/Desktop/Spyzza_BuildApha/Spyzza.exe
+  - Assets/Scenes/Programming/Ricard/Menu.unity
+  - Assets/Scenes/Programming/Ricard/Cinematic.unity
+  - Assets/Scenes/Programming/Ricard/Ricard Boss.unity
+  - Assets/Scenes/Programming/Ricard/Ricard Planta1.unity
+  - Assets/Scenes/Programming/Ricard/Extras.unity
+  playerPath: C:/Users/Usuario/Desktop/GitHub/Spyzza/Prototipe/Spyzza/Builded/PruebaBuild/Spyzza_Data/Spyzza.exe

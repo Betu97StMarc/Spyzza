@@ -5,10 +5,25 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Programming/Ricard/Menu.unity
+    guid: c6ecc54448035b943bf1e329d542564b
   - enabled: 0
     path: Assets/Scenes/Final/Piso1.unity
     guid: 896eea926966b764691baf27033a49c9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LevelDesign/LevelDesign.unity
     guid: f07b7757487af3e4a809ddf3d2b4a780
+  - enabled: 1
+    path: Assets/Scenes/Programming/Ricard/Cinematic.unity
+    guid: c3a9edc178b73f24b9aef8fa610ad387
+  - enabled: 1
+    path: Assets/Scenes/Programming/Ricard/Ricard Boss.unity
+    guid: ba6942de32ac44446976c7885752511f
+  - enabled: 1
+    path: Assets/Scenes/Programming/Ricard/Ricard Planta1.unity
+    guid: 4808eb50c9f03e849a82a7aaf0bd37aa
+  - enabled: 1
+    path: Assets/Scenes/Programming/Ricard/Extras.unity
+    guid: 498d75f08fe456440809d00d29495be0
   m_configObjects: {}

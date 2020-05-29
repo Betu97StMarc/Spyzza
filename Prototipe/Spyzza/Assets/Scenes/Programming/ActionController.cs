@@ -15,6 +15,7 @@ public class ActionController : Singleton<ActionController>
     public  GameObject mug;
     public  GameObject blueCard;
     public  GameObject greenCard;
+    public  Animator safeBox;
     private bool isShowedToastWindows;
     
 
@@ -114,6 +115,7 @@ public class ActionController : Singleton<ActionController>
                 if (this.GetComponent<Player>().postIt)
                 {
                     this.GetComponent<Animator>().Play("Caja Fuerte");
+                    safeBox.Play("Caja Fuerte Abrir");
                     time_action = 7;
                     isActionActive = true;
                     time_change_location = 20;
@@ -136,7 +138,8 @@ public class ActionController : Singleton<ActionController>
         if (tag_collider == "EscalarReuniones")
         {
             this.GetComponent<Animator>().Play("Escalar");           
-            time_action = 5;
+            time_action = 10;
+            
             time_change_location = 5;
             time_change_location_2 = 15;
             isActionActive = true;            
@@ -145,7 +148,8 @@ public class ActionController : Singleton<ActionController>
         if (tag_collider == "EscalarCajaFuerte")
         {
             this.GetComponent<Animator>().Play("Escalar");
-            time_action = 5;
+            time_action = 10;
+            
             time_change_location = 15;
             time_change_location_2 = 5;
             isActionActive = true;            

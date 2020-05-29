@@ -134,8 +134,22 @@ public class Player : MonoBehaviour
 
         if (other.tag == "Rumba")
         {
-            alive = false;
-            this.GetComponent<Animator>().Play("Electrocuted");
+            GameManager.Instance.GameOver();
+        }
+
+        if (other.tag == "Laser1")
+        {
+            GameManager.Instance.GameOver();
+        }
+
+        if (other.tag == "Laser2")
+        {
+            GameManager.Instance.GameOver();
+        }
+
+        if (other.tag == "Laser3")
+        {
+            GameManager.Instance.GameOver();
         }
     }
 

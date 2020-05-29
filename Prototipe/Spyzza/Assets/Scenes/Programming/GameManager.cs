@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 
@@ -36,6 +37,8 @@ public class GameManager : Singleton<GameManager>
     public bool greenCard;
     public FindEM[] enemys;
     public bool isInside;
+    public Scene currentScene;
+    public string sceneName;
 
 
 
@@ -50,23 +53,26 @@ public class GameManager : Singleton<GameManager>
     // Start is called before the first frame update
     void Start()
     {
-        startPosition = new Vector3(61, -13, 18);
-        alarmDisconnected = false;
-        //timerText.enabled = false;
+        currentScene = SceneManager.GetActiveScene();
+        sceneName = currentScene.name;
+        if (sceneName == "Ricard Planta1")
+        {
+            startPosition = new Vector3(61, -13, 18);
+            alarmDisconnected = false;
+            //timerText.enabled = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateUI();
-        
 
         /*
-         * 
-         * Pruebas save data funciona
-         * 
-         * 
-         */
+        * 
+        * Pruebas save data funciona
+        * 
+        * 
+        */
 
         /* 
         if (Input.GetKey(KeyCode.K))
@@ -92,102 +98,106 @@ public class GameManager : Singleton<GameManager>
 
         }
         */
-
-
-        if (isThePlayerColliding)
-        {
-            interactText.enabled = true;
-        }
-        else
-        {
-            interactText.enabled = false;
-        }
-
-        if (Input.GetKey(KeyCode.E) && isThePlayerColliding)
-        {
-            CallAnalyseActionCollider();
-        }
-
-        if (player.GetComponent<Player>().alive)
-        {
-            gameOverCanvas.SetActive(false);
-            mainCanvas.SetActive(true);
-        }
-        else
-        {
-            if (menuCanvas.activeSelf == false) gameOverCanvas.SetActive(true);
-            mainCanvas.SetActive(false);
-        }
-
-        if (alarmDisconnected)
-        {
-            camera1L.enabled = false;
-            camera2L.enabled = false;
-            camera3L.enabled = false;
-            camera4L.enabled = false;
-            alarmTimer = 120;
-
-        }
-        else
-        {
-            camera1L.enabled = true;
-            camera2L.enabled = true;
-            camera3L.enabled = true;
-            camera4L.enabled = true;
-
-        }
-
-        if (camera1B.GetComponent<FieldOfView>().encontrado || camera2B.GetComponent<FieldOfView>().encontrado ||
-            camera3B.GetComponent<FieldOfView>().encontrado || camera4B.GetComponent<FieldOfView>().encontrado)
-        {
-            alarmActivated = true;
-        }
-
-        if (alarmActivated && !alarmDisconnected)
-        {
-            alarmTimer -= Time.deltaTime;
-            timerText.enabled = true;
-        }
-        else
-        {
-            timerText.enabled = false;
-            alarmTimer = 120;
-        }
-
-        if (alarmTimer <= 0)
-        {
-            GameOver();
-            timerText.enabled = false;
-        }
-
-        if (gameOverCanvas.activeSelf == true || menuCanvas.activeSelf == true || winCanvas.activeSelf == true || optionsCanvas.activeSelf == true)
+        if (sceneName == "Menu" || sceneName == "Cinematic" || sceneName == "Extras")
         {
             Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;            
+            Cursor.lockState = CursorLockMode.None;
         }
-        else
+        if (sceneName == "Ricard Planta1")
         {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        
 
+            UpdateUI();
+            if (isThePlayerColliding)
+            {
+                interactText.enabled = true;
+            }
+            else
+            {
+                interactText.enabled = false;
+            }
+
+            if (Input.GetKey(KeyCode.E) && isThePlayerColliding)
+            {
+                CallAnalyseActionCollider();
+            }
+
+            if (player.GetComponent<Player>().alive)
+            {
+                gameOverCanvas.SetActive(false);
+                mainCanvas.SetActive(true);
+            }
+            else
+            {
+                if (menuCanvas.activeSelf == false) gameOverCanvas.SetActive(true);
+                mainCanvas.SetActive(false);
+            }
+
+            if (alarmDisconnected)
+            {
+                camera1L.enabled = false;
+                camera2L.enabled = false;
+                camera3L.enabled = false;
+                camera4L.enabled = false;
+                alarmTimer = 120;
+
+            }
+            else
+            {
+                camera1L.enabled = true;
+                camera2L.enabled = true;
+                camera3L.enabled = true;
+                camera4L.enabled = true;
+
+            }
+
+            if (camera1B.GetComponent<FieldOfView>().encontrado || camera2B.GetComponent<FieldOfView>().encontrado ||
+                camera3B.GetComponent<FieldOfView>().encontrado || camera4B.GetComponent<FieldOfView>().encontrado)
+            {
+                alarmActivated = true;
+            }
+
+            if (alarmActivated && !alarmDisconnected)
+            {
+                alarmTimer -= Time.deltaTime;
+                timerText.enabled = true;
+            }
+            else
+            {
+                timerText.enabled = false;
+                alarmTimer = 120;
+            }
+
+            if (alarmTimer <= 0)
+            {
+                GameOver();
+                timerText.enabled = false;
+            }
+
+            
+        }
     }
 
     public void UpdateUI()
     {
-        if (menuCanvas.activeSelf == true)
-        {
-            mainCanvas.SetActive(false);
-            gameOverCanvas.SetActive(false);
-            alarmCanvas.SetActive(false);
-            inventaryCanvas.SetActive(false);
-        }
-        else
-        {
-            mainCanvas.SetActive(true);
-        }
 
+        if (sceneName == "Ricard Planta1")
+        {
+            if (gameOverCanvas.activeSelf == true || winCanvas.activeSelf == true || alarmCanvas.activeSelf == true)
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else
+            {
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+        }
+        else if (sceneName == "Menu" || sceneName == "Cinematic" || sceneName == "Extras")
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
         timerText.text = alarmTimer.ToString("#.00");
 
         if (player.GetComponent<Player>().mug)
@@ -247,8 +257,14 @@ public class GameManager : Singleton<GameManager>
 
     public void GoGame()
     {
+        SceneManager.LoadScene("Cinematic", LoadSceneMode.Single);
         menuCanvas.SetActive(false);
-        mainCanvas.SetActive(true);
+    }
+
+    public void GoExtras()
+    {
+        SceneManager.LoadScene("Extras", LoadSceneMode.Single);
+        menuCanvas.SetActive(false);
     }
 
     public void GoMenu()
@@ -258,12 +274,19 @@ public class GameManager : Singleton<GameManager>
         winCanvas.SetActive(false);
         gameOverCanvas.SetActive(false);
         Restart();
+        SceneManager.LoadScene("Menu", LoadSceneMode.Single);
     }
 
     public void GoOptions()
     {
         menuCanvas.SetActive(false);
         optionsCanvas.SetActive(true);
+    }
+
+    public void CloseOptions()
+    {
+        menuCanvas.SetActive(true);
+        optionsCanvas.SetActive(false);
     }
 
     public void ExitGame()

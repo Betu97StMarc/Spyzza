@@ -28,7 +28,7 @@ public class AlarmManager : MonoBehaviour
             WinGame();
         }
 
-        if(gameHasEnded)
+        /*if(gameHasEnded)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -37,7 +37,7 @@ public class AlarmManager : MonoBehaviour
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-        }
+        }*/
     }
 
     public void EndGame()
