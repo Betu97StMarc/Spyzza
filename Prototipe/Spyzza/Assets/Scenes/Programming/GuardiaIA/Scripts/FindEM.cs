@@ -1,14 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class FindEM : MonoBehaviour
 {
+    public NavMeshAgent nav;
     public float hearingRadius;
     public float seeRadius;
     public float seeAngle;
     public float Speed;
     [HideInInspector]
+
     public Vector3 lastPos;
     public AnimationClip lookArround;
     float animationLenght;
@@ -34,17 +38,20 @@ public class FindEM : MonoBehaviour
     {
         if (!catched)
         {
-            if (!Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.LeftControl))
             {
                 hearStop = true;
             }
-            else
+            if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.LeftControl))
             {
                 hearStop = false;
             }
             if (Vector3.Distance(transform.position, player.transform.position) <= hearingRadius)
             {
-                if (!hearStop) { Hear(); }
+                if (!hearStop) { Hear();}
+                {
+                    Patrol();
+                } 
                 See();
             }
             else if (!hasSeen)
@@ -108,34 +115,28 @@ public class FindEM : MonoBehaviour
                 RaycastHit hit;
                 if (!Physics.Raycast(ray, out hit, seeRadius, ObstacleMask))
                 {
-                    MoveToPlayer(player.transform.position);
                     canSee = true;
                     hasSeen = true;
+                    Debug.Log("moving");
+                    MoveToPlayer(player.transform.position);
+
                 }
             }
-            else
-            {
-                canSee = false;
-            }
+            else { canSee = false; }
         }
-        else
-        {
-            canSee = false;
-        }
+        else { canSee = false; }
     }
     private void Hear()
     {
-        Vector3 playerDirection = player.transform.position - transform.position;
-        Vector3 newDirection = Vector3.RotateTowards(transform.forward, playerDirection, Speed * Time.deltaTime, 0.0f);
-        transform.rotation = Quaternion.LookRotation(newDirection);
+        transform.LookAt(player.transform.position);    
     }
 
     public void MoveToPlayer(Vector3 playerPosition)
     {
         if (!catched)
         {
-            transform.position = Vector3.MoveTowards(transform.position, playerPosition, Speed * Time.deltaTime);
-            transform.position = new Vector3(transform.position.x, startY, transform.position.z);
+            nav.SetDestination(playerPosition);
+            //transform.position = new Vector3(transform.position.x, startY, transform.position.z);
             lastKnown = playerPosition;
             if (Vector3.Distance(transform.position, playerPosition) <= 1f)
             {
@@ -145,7 +146,8 @@ public class FindEM : MonoBehaviour
     }
     void LastPosition(Vector3 LastPosition)
     {
-        transform.position = Vector3.MoveTowards(transform.position, LastPosition, Speed * Time.deltaTime);
+        if (!nav.enabled) nav.enabled = true;
+        nav.SetDestination(LastPosition);
         float Distance = Vector3.Distance(transform.position, LastPosition);
         if (Vector3.Distance(transform.position, LastPosition) <= 0.5f)
         {
@@ -171,8 +173,8 @@ public class FindEM : MonoBehaviour
         {
             next++;
         }
-        transform.LookAt(patrolPoints[next].transform);
-        transform.position = Vector3.MoveTowards(transform.position, nextPos.position, Speed * Time.deltaTime);
+        //transform.LookAt(patrolPoints[next].transform);
+        nav.SetDestination(patrolPoints[next].transform.position);
     }
     #endregion
 }

@@ -11,6 +11,7 @@ public class ActionController : Singleton<ActionController>
     public float time_action;
     public  float time_change_location;
     public  float time_change_location_2;
+    public float time_go_boss = 1;
     public  float time_toast;
     public  GameObject mug;
     public  GameObject blueCard;
@@ -29,11 +30,17 @@ public class ActionController : Singleton<ActionController>
     // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetKey(KeyCode.H))
+        {
+            this.GetComponent<Animator>().Play("SalirTaquilla");
+        }
         if (isActionActive)
         {
             time_action -= Time.deltaTime;
             time_change_location -= Time.deltaTime;
             time_change_location_2 -= Time.deltaTime;
+            time_go_boss -= Time.deltaTime;
             if (isToastActive)
             {
                 time_toast += Time.deltaTime;
@@ -62,6 +69,11 @@ public class ActionController : Singleton<ActionController>
                 transform.position = new Vector3(38.7f, -13, -10.83f);
             }
 
+            if (time_go_boss <= 0)
+            {
+                GameManager.Instance.GoBoss();
+            }
+
             if (time_toast <= 0)
             {
                 time_toast = 0;
@@ -83,7 +95,12 @@ public class ActionController : Singleton<ActionController>
                 time_change_location_2 = 0;
             }
 
-            
+           /* if (time_go_boss <= -2)
+            {
+                time_go_boss = 0;
+            }*/
+
+
 
         }
     }
@@ -97,6 +114,7 @@ public class ActionController : Singleton<ActionController>
             time_action = 1;
             time_change_location = 20;
             time_change_location_2 = 20;
+            time_go_boss = 20;
             isActionActive = true;
             greenCard.SetActive(false);
         }
@@ -120,6 +138,7 @@ public class ActionController : Singleton<ActionController>
                     isActionActive = true;
                     time_change_location = 20;
                     time_change_location_2 = 20;
+                    time_go_boss = 20;
                     time_toast = 0;
                     isToastActive = true;
                     isSafe = true;
@@ -138,20 +157,22 @@ public class ActionController : Singleton<ActionController>
         if (tag_collider == "EscalarReuniones")
         {
             this.GetComponent<Animator>().Play("Escalar");           
-            time_action = 10;
+            time_action = 5;
             
             time_change_location = 5;
             time_change_location_2 = 15;
+            time_go_boss = 20;
             isActionActive = true;            
         }
 
         if (tag_collider == "EscalarCajaFuerte")
         {
             this.GetComponent<Animator>().Play("Escalar");
-            time_action = 10;
+            time_action = 5;
             
             time_change_location = 15;
             time_change_location_2 = 5;
+            time_go_boss = 20;
             isActionActive = true;            
         }
 
@@ -164,6 +185,7 @@ public class ActionController : Singleton<ActionController>
                 time_action = 1;
                 time_change_location = 20;
                 time_change_location_2 = 20;
+                time_go_boss = 20;
                 isActionActive = true;
                 mug.SetActive(false);
             }
@@ -182,6 +204,7 @@ public class ActionController : Singleton<ActionController>
                 time_action = 1;
                 time_change_location = 20;
                 time_change_location_2 = 20;
+                time_go_boss = 20;
                 isActionActive = true;
                 mug.SetActive(false);
             }
@@ -200,6 +223,7 @@ public class ActionController : Singleton<ActionController>
                 time_action = 1;
                 time_change_location = 20;
                 time_change_location_2 = 20;
+                time_go_boss = 20;
                 isActionActive = true;
                 blueCard.SetActive(false);
             }
@@ -214,8 +238,9 @@ public class ActionController : Singleton<ActionController>
             if (this.GetComponent<Player>().redCard && this.GetComponent<Player>().blueCard && this.GetComponent<Player>().greenCard)
             {
                 this.GetComponent<Animator>().Play("IntroducirTarjeta");
-                GameManager.Instance.winCanvas.SetActive(true);
-                time_action = 3;
+                //GameManager.Instance.winCanvas.SetActive(true);
+                time_action = 8;
+                time_go_boss = 8;
                 time_change_location = 20;
                 time_change_location_2 = 20;
                 isActionActive = true;

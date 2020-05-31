@@ -10,9 +10,12 @@ public class Player : MonoBehaviour
     public bool mug;
     public bool postIt;
     public bool redCard;
+    public bool escondido = false;
     public bool blueCard;
     public bool greenCard;
     public LayerMask enemyMask;
+    public RotationController rotationCam;
+    public PlayerController playerController;
     //public Text xT;
     //public Text yT;
     //public Text zT;
@@ -36,12 +39,22 @@ public class Player : MonoBehaviour
         //xT.text = gameObject.transform.position.x.ToString();
         //yT.text = gameObject.transform.position.y.ToString();
         //zT.text = gameObject.transform.position.z.ToString();
+        Debug.Log(escondido);
+        if (Input.GetKey(KeyCode.E))
+          {
+            if (escondido)
+            {
+                this.GetComponent<Animator>().Play("SalirTaquilla");
+                rotationCam.enabled = true;
+                playerController.enabled = true;
+                escondido = false;
+            }
+        }
         position = transform.position;
         enemyCollider = Physics.OverlapSphere(gameObject.transform.position, 3, enemyMask);
 
         if (enemyCollider.Length > 0)
         {
-            Debug.Log("s'ha torbat un enemic");
             if (Input.GetKey(KeyCode.E))
             {
                 Steal();
@@ -75,9 +88,31 @@ public class Player : MonoBehaviour
             }
         }
     }
-
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "TaquillaEsconder")
+        {
+            if (!escondido)
+            {
+                if (Input.GetKeyUp(KeyCode.E))
+                {
+                    this.GetComponent<Animator>().Play("EntrarTaquilla");
+                    //desactivar script camara 
+                    playerController.enabled = false;
+                    rotationCam.enabled = false;
+                    escondido = true;
+                }
+            }
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
+
+        if (other.tag == "Death")
+        {
+            GameManager.Instance.GameOver();
+        }
+
         if (other.tag == "DisconnectAlarm")
         {
             GameManager.Instance.setIsThePlayerColliding(true);
@@ -95,7 +130,6 @@ public class Player : MonoBehaviour
             GameManager.Instance.setIsThePlayerColliding(true);
             GameManager.Instance.SetTagCollidingObject(other.tag);
         }
-
         if (other.tag == "CajaFuerte")
         {
             GameManager.Instance.setIsThePlayerColliding(true);
@@ -139,17 +173,17 @@ public class Player : MonoBehaviour
 
         if (other.tag == "Laser1")
         {
-            GameManager.Instance.GameOver();
+            GameManager.Instance.alarmActivated = true;
         }
 
         if (other.tag == "Laser2")
         {
-            GameManager.Instance.GameOver();
+            GameManager.Instance.alarmActivated = true;
         }
 
         if (other.tag == "Laser3")
         {
-            GameManager.Instance.GameOver();
+            GameManager.Instance.alarmActivated = true;
         }
     }
 
@@ -208,6 +242,8 @@ public class Player : MonoBehaviour
             GameManager.Instance.setIsThePlayerColliding(false);
             GameManager.Instance.UpdateInteractPanel();
         }
+
+        
 
     }
 

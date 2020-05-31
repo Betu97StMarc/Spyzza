@@ -92,6 +92,6 @@ public class AlarmManager : MonoBehaviour
         gameHasEnded = true;
         canvasWin.SetActive(true);
         GameManager.alarmDisconnected = true;
-        GameManager.alarmActivated = false;
+        GameManager.Instance.alarmActivated = false;
     }
 }

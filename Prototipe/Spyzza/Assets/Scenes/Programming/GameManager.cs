@@ -16,9 +16,12 @@ public class GameManager : Singleton<GameManager>
     public GameObject alarmCanvas;
     public GameObject gameOverCanvas;
     public GameObject winCanvas;
+    public GameObject laser1;
+    public GameObject laser2;
+    public GameObject laser3;
     public Vector3 startPosition;
     public static bool alarmDisconnected;
-    public static bool alarmActivated;
+    public bool alarmActivated;
     public float alarmTimer = 120;
     public Text timerText;
     public Text interactText;
@@ -103,9 +106,14 @@ public class GameManager : Singleton<GameManager>
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
-        if (sceneName == "Ricard Planta1")
+        if (sceneName == "Boss Ricard")
+        {
+            //LOGICA SALA BOSS
+        }
+            if (sceneName == "Ricard Planta1")
         {
 
+            UpdateLaser();
             UpdateUI();
             if (isThePlayerColliding)
             {
@@ -175,6 +183,26 @@ public class GameManager : Singleton<GameManager>
 
             
         }
+    }
+    public void UpdateLaser()
+    {
+        if(!alarmDisconnected)
+        {
+            laser1.SetActive(true);
+            laser2.SetActive(true);
+            laser3.SetActive(true);
+        }
+        else
+        {
+            laser1.SetActive(false);
+            laser2.SetActive(false);
+            laser3.SetActive(false);
+        }
+    }
+
+    public void GoBoss()
+    {
+        SceneManager.LoadScene("Boss Ricard", LoadSceneMode.Single);
     }
 
     public void UpdateUI()
@@ -316,7 +344,7 @@ public class GameManager : Singleton<GameManager>
             x.catched = false;
             x.canSee = false;
             x.hasSeen = false;
-            x.hearStop = true;
+            x.hearStop = false;
             x.Aggro = false;
             x.gameObject.transform.position = x.startPosition;
         }

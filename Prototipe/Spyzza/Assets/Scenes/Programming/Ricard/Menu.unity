@@ -1250,7 +1250,11 @@ MonoBehaviour:
   alarmCanvas: {fileID: 0}
   gameOverCanvas: {fileID: 0}
   winCanvas: {fileID: 0}
+  laser1: {fileID: 0}
+  laser2: {fileID: 0}
+  laser3: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
+  alarmActivated: 0
   alarmTimer: 120
   timerText: {fileID: 0}
   interactText: {fileID: 0}
