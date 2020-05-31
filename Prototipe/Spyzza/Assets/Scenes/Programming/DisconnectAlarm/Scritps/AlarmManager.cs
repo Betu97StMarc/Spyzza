@@ -23,7 +23,7 @@ public class AlarmManager : MonoBehaviour
             canvasWin.SetActive(false);
         }
         
-        if(Score.PinCount >= 3)
+        if(Score.PinCount >= 8)
         {
             WinGame();
         }
@@ -91,7 +91,7 @@ public class AlarmManager : MonoBehaviour
         //animatorCamera.SetTrigger("WinGame");
         gameHasEnded = true;
         canvasWin.SetActive(true);
-        GameManager.alarmDisconnected = true;
+        GameManager.Instance.alarmDisconnected = true;
         GameManager.Instance.alarmActivated = false;
     }
 }

@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class FindEM : MonoBehaviour
 {
-    public NavMeshAgent nav;
     public float hearingRadius;
     public float seeRadius;
     public float seeAngle;
     public float Speed;
     [HideInInspector]
-
     public Vector3 lastPos;
     public AnimationClip lookArround;
     float animationLenght;
@@ -36,23 +32,23 @@ public class FindEM : MonoBehaviour
     }
     private void Update()
     {
+        DontRotate();
         if (!catched)
         {
-            if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.LeftControl))
+            if (PlayerController.speed < 2.9f)
             {
                 hearStop = true;
             }
-            if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.LeftControl))
+            else
             {
                 hearStop = false;
             }
             if (Vector3.Distance(transform.position, player.transform.position) <= hearingRadius)
             {
-                if (!hearStop) { Hear();}
-                {
-                    Patrol();
-                } 
+                if (!hearStop) { Hear(); }
                 See();
+                if(hearStop && !canSee) { Patrol(); }
+                else if(hearStop && canSee) { See(); } 
             }
             else if (!hasSeen)
             {
@@ -79,6 +75,11 @@ public class FindEM : MonoBehaviour
         player.GetComponent<Player>().alive = false;
         //GameOver
         GameManager.Instance.GameOver();
+    }
+
+    public void DontRotate()
+    {
+        this.transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
     }
 
     private void OnDrawGizmos() //INFO: Permite la visualizaciond el campo de vision de los guardias en el editor de UNITY no necesario para el correcto funcionamiento del codigo
@@ -115,28 +116,34 @@ public class FindEM : MonoBehaviour
                 RaycastHit hit;
                 if (!Physics.Raycast(ray, out hit, seeRadius, ObstacleMask))
                 {
+                    MoveToPlayer(player.transform.position);
                     canSee = true;
                     hasSeen = true;
-                    Debug.Log("moving");
-                    MoveToPlayer(player.transform.position);
-
                 }
             }
-            else { canSee = false; }
+            else
+            {
+                canSee = false;
+            }
         }
-        else { canSee = false; }
+        else
+        {
+            canSee = false;
+        }
     }
     private void Hear()
     {
-        transform.LookAt(player.transform.position);    
+        Vector3 playerDirection = player.transform.position - transform.position;
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, playerDirection, Speed * Time.deltaTime, 0.0f);
+        transform.rotation = Quaternion.LookRotation(newDirection);
     }
 
     public void MoveToPlayer(Vector3 playerPosition)
     {
         if (!catched)
         {
-            nav.SetDestination(playerPosition);
-            //transform.position = new Vector3(transform.position.x, startY, transform.position.z);
+            transform.position = Vector3.MoveTowards(transform.position, playerPosition, Speed * Time.deltaTime);
+            transform.position = new Vector3(transform.position.x, startY, transform.position.z);
             lastKnown = playerPosition;
             if (Vector3.Distance(transform.position, playerPosition) <= 1f)
             {
@@ -146,8 +153,7 @@ public class FindEM : MonoBehaviour
     }
     void LastPosition(Vector3 LastPosition)
     {
-        if (!nav.enabled) nav.enabled = true;
-        nav.SetDestination(LastPosition);
+        transform.position = Vector3.MoveTowards(transform.position, LastPosition, Speed * Time.deltaTime);
         float Distance = Vector3.Distance(transform.position, LastPosition);
         if (Vector3.Distance(transform.position, LastPosition) <= 0.5f)
         {
@@ -173,8 +179,8 @@ public class FindEM : MonoBehaviour
         {
             next++;
         }
-        //transform.LookAt(patrolPoints[next].transform);
-        nav.SetDestination(patrolPoints[next].transform.position);
+        transform.LookAt(patrolPoints[next].transform);
+        transform.position = Vector3.MoveTowards(transform.position, nextPos.position, Speed * Time.deltaTime);
     }
     #endregion
 }

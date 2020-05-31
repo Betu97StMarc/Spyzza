@@ -9,16 +9,16 @@ public class ActionController : Singleton<ActionController>
     public bool isSafe;
     private string tag_name_function;
     public float time_action;
-    public  float time_change_location;
-    public  float time_change_location_2;
+    public float time_change_location;
+    public float time_change_location_2;
     public float time_go_boss = 1;
-    public  float time_toast;
-    public  GameObject mug;
-    public  GameObject blueCard;
-    public  GameObject greenCard;
-    public  Animator safeBox;
+    public float time_toast;
+    public GameObject mug;
+    public GameObject blueCard;
+    public GameObject greenCard;
+    public Animator safeBox;
     private bool isShowedToastWindows;
-    
+
 
 
     // Start is called before the first frame updatee
@@ -44,9 +44,9 @@ public class ActionController : Singleton<ActionController>
             if (isToastActive)
             {
                 time_toast += Time.deltaTime;
-                if(isSafe)
+                if (isSafe)
                 {
-                    if(time_toast >= 6)
+                    if (time_toast >= 6)
                     {
                         Debug.Log("toast?");
                         GameManager.Instance.MessageRedCardCollected();
@@ -59,7 +59,7 @@ public class ActionController : Singleton<ActionController>
             }
             if (time_change_location <= 0)
             {
-                
+
                 transform.position = new Vector3(29.98f, -13, -11.49f);
             }
 
@@ -95,10 +95,10 @@ public class ActionController : Singleton<ActionController>
                 time_change_location_2 = 0;
             }
 
-           /* if (time_go_boss <= -2)
-            {
-                time_go_boss = 0;
-            }*/
+            /* if (time_go_boss <= -2)
+             {
+                 time_go_boss = 0;
+             }*/
 
 
 
@@ -156,24 +156,24 @@ public class ActionController : Singleton<ActionController>
 
         if (tag_collider == "EscalarReuniones")
         {
-            this.GetComponent<Animator>().Play("Escalar");           
+            this.GetComponent<Animator>().Play("Escalar");
             time_action = 5;
-            
+
             time_change_location = 5;
             time_change_location_2 = 15;
             time_go_boss = 20;
-            isActionActive = true;            
+            isActionActive = true;
         }
 
         if (tag_collider == "EscalarCajaFuerte")
         {
             this.GetComponent<Animator>().Play("Escalar");
             time_action = 5;
-            
+
             time_change_location = 15;
             time_change_location_2 = 5;
             time_go_boss = 20;
-            isActionActive = true;            
+            isActionActive = true;
         }
 
         if (tag_collider == "CogerTaza")
@@ -244,7 +244,7 @@ public class ActionController : Singleton<ActionController>
                 time_change_location = 20;
                 time_change_location_2 = 20;
                 isActionActive = true;
-                
+
             }
             else
             {
@@ -252,25 +252,35 @@ public class ActionController : Singleton<ActionController>
             }
         }
 
+        if (tag_collider == "PuertaFinal")
+        {
+                GameManager.Instance.winCanvas.SetActive(true);
+                time_action = 20;
+                time_go_boss = 20;
+                time_change_location = 20;
+                time_change_location_2 = 20;
+                isActionActive = true;
+        }
+
 
         if (tag_collider == "DisconnectAlarm")
         {
             //GameManager.Instance.alarmCanvas.SetActive(true);
-            if(!GameManager.alarmDisconnected)
+            if (!GameManager.Instance.alarmDisconnected)
             {
                 GameManager.Instance.alarmCanvas.SetActive(true);
-                
+
             }
             else
             {
                 GameManager.Instance.MessageAlarmDisconnected();
-                
+
             }
         }
 
         if (tag_collider == "Taquilla")
         {
-           
+
             if (GameManager.Instance.isInside)
             {
                 this.GetComponent<Animator>().SetTrigger("SalirTaquilla");
@@ -312,6 +322,6 @@ public class ActionController : Singleton<ActionController>
 
     public void ActionDisconnectAlarm()
     {
-        
+
     }
 }

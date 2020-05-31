@@ -21,6 +21,7 @@ TagManager:
   - Laser1
   - Laser2
   - Laser3
+  - BossCollider
   layers:
   - Default
   - TransparentFX

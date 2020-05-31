@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 1f;
+    public static float speed = 1f;
     public bool canJump;
     public bool isCrouched;    
     public Animator playerC;

@@ -20,7 +20,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject laser2;
     public GameObject laser3;
     public Vector3 startPosition;
-    public static bool alarmDisconnected;
+    public bool alarmDisconnected;
     public bool alarmActivated;
     public float alarmTimer = 120;
     public Text timerText;
@@ -49,7 +49,7 @@ public class GameManager : Singleton<GameManager>
     // private Vector3 startPosition;
     private string tag_collidingObject;
     private bool isThePlayerColliding;
-    
+
 
 
 
@@ -105,12 +105,30 @@ public class GameManager : Singleton<GameManager>
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+            if (Input.GetKey(KeyCode.E) && isThePlayerColliding)
+            {
+                CallAnalyseActionCollider();
+            }
         }
         if (sceneName == "Boss Ricard")
         {
             //LOGICA SALA BOSS
+            UpdateUI();
+            UpdateInteractPanel();
+            if (isThePlayerColliding)
+            {
+                interactText.enabled = true;
+            }
+            else
+            {
+                interactText.enabled = false;
+            }
+            if (Input.GetKey(KeyCode.E) && isThePlayerColliding)
+            {
+                CallAnalyseActionCollider();
+            }
         }
-            if (sceneName == "Ricard Planta1")
+        if (sceneName == "Ricard Planta1")
         {
 
             UpdateLaser();
@@ -181,12 +199,12 @@ public class GameManager : Singleton<GameManager>
                 timerText.enabled = false;
             }
 
-            
+
         }
     }
     public void UpdateLaser()
     {
-        if(!alarmDisconnected)
+        if (!alarmDisconnected)
         {
             laser1.SetActive(true);
             laser2.SetActive(true);
@@ -208,7 +226,7 @@ public class GameManager : Singleton<GameManager>
     public void UpdateUI()
     {
 
-        if (sceneName == "Ricard Planta1")
+        if (sceneName == "Ricard Planta1" || sceneName == "Boss Ricard")
         {
             if (gameOverCanvas.activeSelf == true || winCanvas.activeSelf == true || alarmCanvas.activeSelf == true)
             {
@@ -228,7 +246,12 @@ public class GameManager : Singleton<GameManager>
         }
         timerText.text = alarmTimer.ToString("#.00");
 
-        if (player.GetComponent<Player>().mug)
+        if (sceneName == "Boss Ricard")
+        {
+            //LOGICA SALA BOSS
+        }
+
+            if (player.GetComponent<Player>().mug)
         {
             mug = true;
         }
@@ -353,8 +376,8 @@ public class GameManager : Singleton<GameManager>
     public void GameOver()
     {
         player.GetComponent<Player>().alive = false;
-        player.GetComponent<Animator>().SetBool ("Death",true);
-        
+        player.GetComponent<Animator>().SetBool("Death", true);
+
     }
 
     public void setIsThePlayerColliding(bool new_state)
@@ -440,6 +463,12 @@ public class GameManager : Singleton<GameManager>
     public void ActivateOffice()
     {
         SetTagCollidingObject("Taquilla");
+        CallAnalyseActionCollider();
+    }
+
+    public void ActivateBossFight()
+    {
+        SetTagCollidingObject("BossCollider");
         CallAnalyseActionCollider();
     }
 
