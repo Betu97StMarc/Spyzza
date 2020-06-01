@@ -25,7 +25,7 @@ public class RotationController : MonoBehaviour
     void CamControl()
     {
         mouseX += Input.GetAxis("Mouse X") * RotationSpeed;
-        mouseY += Input.GetAxis("Mouse Y") * -RotationSpeed;
+        mouseY += Input.GetAxis("Mouse Y") * RotationSpeed;
         mouseY = Mathf.Clamp(mouseY, -20, 50);
 
         transform.LookAt(Target);

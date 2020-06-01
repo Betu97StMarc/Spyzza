@@ -110,22 +110,18 @@ public class GameManager : Singleton<GameManager>
                 CallAnalyseActionCollider();
             }
         }
-        if (sceneName == "Boss Ricard")
+        if (sceneName == "Ricard Boss")
         {
             //LOGICA SALA BOSS
-            UpdateUI();
-            UpdateInteractPanel();
-            if (isThePlayerColliding)
+            if(winCanvas.activeSelf == true)
             {
-                interactText.enabled = true;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
             }
             else
             {
-                interactText.enabled = false;
-            }
-            if (Input.GetKey(KeyCode.E) && isThePlayerColliding)
-            {
-                CallAnalyseActionCollider();
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
             }
         }
         if (sceneName == "Ricard Planta1")
@@ -220,7 +216,7 @@ public class GameManager : Singleton<GameManager>
 
     public void GoBoss()
     {
-        SceneManager.LoadScene("Boss Ricard", LoadSceneMode.Single);
+        SceneManager.LoadScene("Ricard Boss", LoadSceneMode.Single);
     }
 
     public void UpdateUI()
@@ -320,11 +316,11 @@ public class GameManager : Singleton<GameManager>
 
     public void GoMenu()
     {
-        menuCanvas.SetActive(true);
+        /*menuCanvas.SetActive(true);
         mainCanvas.SetActive(false);
         winCanvas.SetActive(false);
         gameOverCanvas.SetActive(false);
-        Restart();
+        Restart();*/
         SceneManager.LoadScene("Menu", LoadSceneMode.Single);
     }
 
@@ -347,7 +343,7 @@ public class GameManager : Singleton<GameManager>
 
     public void Restart()
     {
-        player.transform.position = startPosition;
+        /*player.transform.position = startPosition;
         alarmTimer = 120;
         alarmActivated = false;
         player.GetComponent<Player>().alive = true;
@@ -370,7 +366,8 @@ public class GameManager : Singleton<GameManager>
             x.hearStop = false;
             x.Aggro = false;
             x.gameObject.transform.position = x.startPosition;
-        }
+        }*/
+        SceneManager.LoadScene("Ricard Planta1", LoadSceneMode.Single);
     }
 
     public void GameOver()
@@ -460,6 +457,12 @@ public class GameManager : Singleton<GameManager>
         CallAnalyseActionCollider();
     }
 
+    public void ActivateScreens()
+    {
+        SetTagCollidingObject("Pantalles");
+        CallAnalyseActionCollider();
+    }
+
     public void ActivateOffice()
     {
         SetTagCollidingObject("Taquilla");
@@ -518,6 +521,11 @@ public class GameManager : Singleton<GameManager>
     public void MessageFinalDoor()
     {
         Toast.Instance.Show("You need 3 security cards", 2f, Toast.ToastColor.Dark);
+    }
+
+    public void MessageScreens()
+    {
+        Toast.Instance.Show("AL RAIT! APAGUEM PANTALLAS!", 4f, Toast.ToastColor.Dark);
     }
 
 }

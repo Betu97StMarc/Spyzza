@@ -70,6 +70,7 @@ public class FindEM : MonoBehaviour
     }
     void Catch()
     {
+        this.GetComponent<Animator>().Play("Atacar");
         catched = true;
         player.GetComponent<Animator>().Play("Electrocuted");
         player.GetComponent<Player>().alive = false;
@@ -136,12 +137,15 @@ public class FindEM : MonoBehaviour
         Vector3 playerDirection = player.transform.position - transform.position;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, playerDirection, Speed * Time.deltaTime, 0.0f);
         transform.rotation = Quaternion.LookRotation(newDirection);
+        if (Speed == 1) { this.GetComponent<Animator>().Play("Idle2"); }
     }
 
     public void MoveToPlayer(Vector3 playerPosition)
     {
         if (!catched)
         {
+            Speed = 2;
+            this.GetComponent<Animator>().Play("Correr");
             transform.position = Vector3.MoveTowards(transform.position, playerPosition, Speed * Time.deltaTime);
             transform.position = new Vector3(transform.position.x, startY, transform.position.z);
             lastKnown = playerPosition;
@@ -153,6 +157,7 @@ public class FindEM : MonoBehaviour
     }
     void LastPosition(Vector3 LastPosition)
     {
+        this.GetComponent<Animator>().Play("Andar");
         transform.position = Vector3.MoveTowards(transform.position, LastPosition, Speed * Time.deltaTime);
         float Distance = Vector3.Distance(transform.position, LastPosition);
         if (Vector3.Distance(transform.position, LastPosition) <= 0.5f)
@@ -168,6 +173,8 @@ public class FindEM : MonoBehaviour
 
     public void Patrol() //Crear EmptyObjects en la escena con la posición Y = a la del guardia y arrastralos todos a PatrolPoints en el editor en el orden que quieras que siga el Guardia
     {
+        Speed = 1;
+        this.GetComponent<Animator>().Play("Andar");
         hasSeen = false;
         canSee = false;
         if (next == patrolPoints.Length - 1)

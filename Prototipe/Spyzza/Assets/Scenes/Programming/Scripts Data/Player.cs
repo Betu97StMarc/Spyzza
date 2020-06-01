@@ -126,6 +126,12 @@ public class Player : MonoBehaviour
             GameManager.Instance.SetTagCollidingObject(other.tag);
         }
 
+        if (other.tag == "Pantalles")
+        {
+            GameManager.Instance.setIsThePlayerColliding(true);
+            GameManager.Instance.SetTagCollidingObject(other.tag);
+        }
+
         if (other.tag == "BossCollider")
         {
             GameManager.Instance.winCanvas.SetActive(true);
@@ -207,6 +213,12 @@ public class Player : MonoBehaviour
         }
 
         if (other.tag == "PuertaFinal")
+        {
+            GameManager.Instance.setIsThePlayerColliding(false);
+            GameManager.Instance.UpdateInteractPanel();
+        }
+
+        if (other.tag == "Pantalles")
         {
             GameManager.Instance.setIsThePlayerColliding(false);
             GameManager.Instance.UpdateInteractPanel();

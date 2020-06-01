@@ -252,16 +252,6 @@ public class ActionController : Singleton<ActionController>
             }
         }
 
-        if (tag_collider == "PuertaFinal")
-        {
-                GameManager.Instance.winCanvas.SetActive(true);
-                time_action = 20;
-                time_go_boss = 20;
-                time_change_location = 20;
-                time_change_location_2 = 20;
-                isActionActive = true;
-        }
-
 
         if (tag_collider == "DisconnectAlarm")
         {
@@ -276,6 +266,11 @@ public class ActionController : Singleton<ActionController>
                 GameManager.Instance.MessageAlarmDisconnected();
 
             }
+        }
+
+        if (tag_collider == "Pantalles")
+        {
+            GameManager.Instance.MessageScreens();
         }
 
         if (tag_collider == "Taquilla")
