@@ -8,12 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Programming/Ricard/Menu.unity
     guid: c6ecc54448035b943bf1e329d542564b
-  - enabled: 0
-    path: Assets/Scenes/Final/Piso1.unity
-    guid: 896eea926966b764691baf27033a49c9
-  - enabled: 0
-    path: Assets/Scenes/LevelDesign/LevelDesign.unity
-    guid: f07b7757487af3e4a809ddf3d2b4a780
   - enabled: 1
     path: Assets/Scenes/Programming/Ricard/Cinematic.unity
     guid: c3a9edc178b73f24b9aef8fa610ad387

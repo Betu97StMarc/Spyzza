@@ -22,6 +22,7 @@ TagManager:
   - Laser2
   - Laser3
   - BossCollider
+  - Pantalles
   layers:
   - Default
   - TransparentFX
