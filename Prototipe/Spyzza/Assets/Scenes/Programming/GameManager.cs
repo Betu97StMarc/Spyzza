@@ -9,9 +9,12 @@ public class GameManager : Singleton<GameManager>
 {
     // PUBLIC ATRIBUTES
     public Player player;
+    public GameObject objectPlayer;
     public GameObject mainCanvas;
     public GameObject menuCanvas;
     public GameObject optionsCanvas;
+    public GameObject pauseCanvas;
+    public bool gamePaused;
     public GameObject inventaryCanvas;
     public GameObject alarmCanvas;
     public GameObject gameOverCanvas;
@@ -24,7 +27,9 @@ public class GameManager : Singleton<GameManager>
     public bool alarmActivated;
     public float alarmTimer = 120;
     public Text timerText;
+    public GameObject timerBackground;
     public Text interactText;
+    public GameObject interactBackground;
     public Light camera1L;
     public GameObject camera1B;
     public Light camera2L;
@@ -33,6 +38,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject camera3B;
     public Light camera4L;
     public GameObject camera4B;
+    public Button continueButton;
     public bool mug;
     public bool postIt;
     public bool redCard;
@@ -60,9 +66,18 @@ public class GameManager : Singleton<GameManager>
         sceneName = currentScene.name;
         if (sceneName == "Ricard Planta1")
         {
+            player.level = 1;
             startPosition = new Vector3(61, -13, 18);
             alarmDisconnected = false;
             //timerText.enabled = false;
+            SaveSystem.SavePlayer(player);
+        }
+
+        if (sceneName == "Boss Ricard")
+        {
+            player.level = 2;
+            objectPlayer.transform.position = new Vector3(-0.5f, 0.15f, 3.1f);
+            SaveSystem.SavePlayer(player);
         }
     }
 
@@ -85,7 +100,7 @@ public class GameManager : Singleton<GameManager>
 
         if (Input.GetKey(KeyCode.L))
         {
-            player.GetComponent<Player>().LoadPlayer();
+            
         }
 
         if (Input.GetKey(KeyCode.L))
@@ -109,7 +124,24 @@ public class GameManager : Singleton<GameManager>
             {
                 CallAnalyseActionCollider();
             }
+            /*if(player.level == 2)
+            {
+                continueButton.interactable = true;
+            }
+            else if(player.level == 1)
+            {
+                continueButton.interactable = false;
+            }*/
         }
+
+       
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseGame();
+            UpdatePause();
+        }
+
         if (sceneName == "Ricard Boss")
         {
             //LOGICA SALA BOSS
@@ -126,17 +158,10 @@ public class GameManager : Singleton<GameManager>
         }
         if (sceneName == "Ricard Planta1")
         {
-
+            UpdatePause();
             UpdateLaser();
             UpdateUI();
-            if (isThePlayerColliding)
-            {
-                interactText.enabled = true;
-            }
-            else
-            {
-                interactText.enabled = false;
-            }
+            UpdateInteractPanel();
 
             if (Input.GetKey(KeyCode.E) && isThePlayerColliding)
             {
@@ -182,10 +207,12 @@ public class GameManager : Singleton<GameManager>
             {
                 alarmTimer -= Time.deltaTime;
                 timerText.enabled = true;
+                timerBackground.SetActive(true);
             }
             else
             {
                 timerText.enabled = false;
+                timerBackground.SetActive(false);
                 alarmTimer = 120;
             }
 
@@ -193,6 +220,7 @@ public class GameManager : Singleton<GameManager>
             {
                 GameOver();
                 timerText.enabled = false;
+                timerBackground.SetActive(false);
             }
 
 
@@ -224,7 +252,7 @@ public class GameManager : Singleton<GameManager>
 
         if (sceneName == "Ricard Planta1" || sceneName == "Boss Ricard")
         {
-            if (gameOverCanvas.activeSelf == true || winCanvas.activeSelf == true || alarmCanvas.activeSelf == true)
+            if (gameOverCanvas.activeSelf == true || winCanvas.activeSelf == true || alarmCanvas.activeSelf == true || pauseCanvas.activeSelf == true)
             {
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
@@ -240,7 +268,7 @@ public class GameManager : Singleton<GameManager>
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
-        timerText.text = alarmTimer.ToString("#.00");
+        timerText.text = alarmTimer.ToString("#.0 s");
 
         if (sceneName == "Boss Ricard")
         {
@@ -326,14 +354,46 @@ public class GameManager : Singleton<GameManager>
 
     public void GoOptions()
     {
-        menuCanvas.SetActive(false);
+        //menuCanvas.SetActive(false);
         optionsCanvas.SetActive(true);
     }
 
     public void CloseOptions()
     {
-        menuCanvas.SetActive(true);
+        //menuCanvas.SetActive(true);
         optionsCanvas.SetActive(false);
+    }
+
+    public void PauseGame()
+    {
+        gamePaused = !gamePaused;
+    }
+
+    public void UpdatePause()
+    {
+        if(gamePaused)
+        {
+            Time.timeScale = 0;
+            pauseCanvas.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            player.GetComponent<Animator>().enabled = false;
+            player.GetComponentInChildren<RotationController>().enabled = false;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            pauseCanvas.SetActive(false);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            player.GetComponent<Animator>().enabled = true;
+            player.GetComponentInChildren<RotationController>().enabled = true;
+        }
+    }
+
+    public void ClosePause()
+    {
+        gamePaused = false;
     }
 
     public void ExitGame()
@@ -402,10 +462,13 @@ public class GameManager : Singleton<GameManager>
         if (isThePlayerColliding)
         {
             interactText.enabled = true;
+            interactBackground.SetActive(true);
         }
         else
         {
             interactText.enabled = false;
+            interactBackground.SetActive(false);
+
         }
     }
 
@@ -479,48 +542,48 @@ public class GameManager : Singleton<GameManager>
 
     public void MessagePostIt()
     {
-        Toast.Instance.Show("Safe password it's 8437", 2f, Toast.ToastColor.Dark);
+        Toast.Instance.Show("La contraseña de la caja fuerte es: 8437", 2f, Toast.ToastColor.Dark);
     }
 
 
     public void MessageSafe()
     {
-        Toast.Instance.Show("You don't know the password", 2f, Toast.ToastColor.Dark);
+        Toast.Instance.Show("No sabes la contraseña", 2f, Toast.ToastColor.Dark);
     }
 
     public void MessageCard()
     {
-        Toast.Instance.Show("You don't have the security card's", 2f, Toast.ToastColor.Dark);
+        Toast.Instance.Show("No tienes todas las tarjetas de seguridad", 2f, Toast.ToastColor.Dark);
     }
 
     public void MessageAlarmDisconnected()
     {
-        Toast.Instance.Show("Alarm system it's currently disabled", 2f, Toast.ToastColor.Dark);
+        Toast.Instance.Show("El sistema de alarmas ya está desactivado", 2f, Toast.ToastColor.Dark);
     }
 
     public void MessageMugCollected()
     {
-        Toast.Instance.Show("You already have the mug", 2f, Toast.ToastColor.Dark);
+        Toast.Instance.Show("Ya tienes la taza", 2f, Toast.ToastColor.Dark);
     }
 
     public void MessageRedCardCollected()
     {
-        Toast.Instance.Show("You already have the red card", 2f, Toast.ToastColor.Dark);
+        Toast.Instance.Show("Ya tienes la tarjeta roja", 2f, Toast.ToastColor.Dark);
     }
 
     public void MessageBlueCardCollected()
     {
-        Toast.Instance.Show("You already have the blue card", 2f, Toast.ToastColor.Dark);
+        Toast.Instance.Show("Ya tienes la tarjeta azul", 2f, Toast.ToastColor.Dark);
     }
 
     public void MessageGreenCardCollected()
     {
-        Toast.Instance.Show("You already have the green card", 2f, Toast.ToastColor.Dark);
+        Toast.Instance.Show("Ya tienes la tarjeta verde", 2f, Toast.ToastColor.Dark);
     }
 
     public void MessageFinalDoor()
     {
-        Toast.Instance.Show("You need 3 security cards", 2f, Toast.ToastColor.Dark);
+        Toast.Instance.Show("Necesitas las tres tarjetas de seguridad", 2f, Toast.ToastColor.Dark);
     }
 
     public void MessageScreens()

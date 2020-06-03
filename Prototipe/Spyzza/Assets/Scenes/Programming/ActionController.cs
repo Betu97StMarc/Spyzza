@@ -15,6 +15,7 @@ public class ActionController : Singleton<ActionController>
     public float time_toast;
     public GameObject mug;
     public GameObject blueCard;
+    public GameObject redCard;
     public GameObject greenCard;
     public Animator safeBox;
     private bool isShowedToastWindows;
@@ -50,6 +51,7 @@ public class ActionController : Singleton<ActionController>
                     {
                         Debug.Log("toast?");
                         GameManager.Instance.MessageRedCardCollected();
+                        redCard.SetActive(false);
                         isToastActive = false;
                         isSafe = false;
                         time_toast = 0;
@@ -244,7 +246,6 @@ public class ActionController : Singleton<ActionController>
                 time_change_location = 20;
                 time_change_location_2 = 20;
                 isActionActive = true;
-
             }
             else
             {

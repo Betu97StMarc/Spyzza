@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 881, y: 492}
   m_MaxSize: {x: 16006, y: 14042}
   vertical: 0
-  controlID: 90
+  controlID: 127
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 605, y: 492}
   m_MaxSize: {x: 12005, y: 14042}
   vertical: 1
-  controlID: 91
+  controlID: 128
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 605, y: 221}
   m_MaxSize: {x: 12005, y: 4021}
   vertical: 0
-  controlID: 92
+  controlID: 129
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -298,8 +298,8 @@ MonoBehaviour:
     y: 0
     width: 334
     height: 947
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 25}
   m_Panes:
   - {fileID: 25}
@@ -472,7 +472,7 @@ MonoBehaviour:
   m_SerializedCustomFieldsNames: []
   m_SerializedCustomFieldsValues: []
   m_PlayModeViewName: GameView
-  m_ShowGizmos: 1
+  m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
   m_TargetSize: {x: 604, y: 340}
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_RenderIMGUI: 1
   m_MaximizeOnPlay: 0
   m_VSyncEnabled: 0
-  m_Gizmos: 1
+  m_Gizmos: 0
   m_Stats: 0
   m_SelectedSizes: 05000000000000000000000000000000000000000000000000000000000000000000000000000000
   m_ZoomArea:
@@ -560,24 +560,24 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 2aa20000
-      m_LastClickedID: 0
-      m_ExpandedIDs: a4d5fdff30d7fdffa0d8fdffa4e7fdffaae7fdffb2e7fdffc4e7fdff7afbfdffd001feff4e60feff5e67feffec6bfeff7a6efeff1a74feffc289feff8090feffc4b7feff14d6feffdcdcfeff0a750000e27700006c780000f07900005a7a0000b27a0000c87a00001a7c000098860000cc86000064870000a0e7020028e802001ae90200
+      scrollPos: {x: 0, y: 2250}
+      m_SelectedIDs: a0b4ffff
+      m_LastClickedID: -19296
+      m_ExpandedIDs: dceeffffb6efffff88f0ffff8cf1ffffb2f1ffffe8f4ffff70fbfffff45400009e550000a8550000fc570000bc580000d25f0000206100004a620000e66300006a690000086c0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Timer Text
-        m_OriginalName: Timer Text
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 31770
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
@@ -618,14 +618,14 @@ MonoBehaviour:
   m_Gizmos: 1
   m_SceneIsLit: 1
   m_SceneLighting: 1
-  m_2DMode: 1
+  m_2DMode: 0
   m_isRotationLocked: 0
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 302.02386, y: 204.18437, z: -44.882847}
+    m_Target: {x: 47.542614, y: -11.712752, z: 9.083568}
     speed: 2
-    m_Value: {x: 305.51285, y: 204.20059, z: -44.41253}
+    m_Value: {x: 47.542614, y: -11.712752, z: 9.083569}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -671,17 +671,17 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0, y: 0, z: 0, w: 1}
+    m_Target: {x: 0.033677753, y: -0.64912784, z: 0.030537639, w: 0.7593554}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0, w: 1}
+    m_Value: {x: 0.033950303, y: -0.64225, z: 0.030232487, w: 0.765146}
   m_Size:
-    m_Target: 109.28513
+    m_Target: 2.313108
     speed: 2
-    m_Value: 104.57908
+    m_Value: 2.313108
   m_Ortho:
-    m_Target: 1
+    m_Target: 0
     speed: 2
-    m_Value: 1
+    m_Value: 0
   m_CameraSettings:
     m_Speed: 1.1
     m_SpeedNormalized: 0.55999994
@@ -695,8 +695,8 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: -0.35259485, y: -0.002762049, z: 0.0008468898, w: -0.9358717}
-  m_LastSceneViewOrtho: 1
+  m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+  m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
   m_SceneVisActive: 1
@@ -941,20 +941,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes/Programming/Ricard
+    - Assets/Texturas/Vistacamaras
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes/Programming/Ricard
+  - Assets/Texturas/Vistacamaras
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: D:\Desktop\Github\Spyzza\Prototipe\Spyzza
+  m_LastProjectPath: C:\Users\Usuario\Desktop\GitHub\Project X\Spyzza\Prototipe\Spyzza
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 326}
-    m_SelectedIDs: 22970000
-    m_LastClickedID: 38690
-    m_ExpandedIDs: 0000000016970000189700001a9700001c9700001e97000020970000229700002497000026970000289700002a9700002c9700002e97000030970000329700003497000036970000389700003a9700003c9700003e97000040970000429700004497000046970000489700001899000000ca9a3b
+    scrollPos: {x: 0, y: 1622}
+    m_SelectedIDs: 2efb0000
+    m_LastClickedID: 64302
+    m_ExpandedIDs: 00000000aa4e0000ac4e0000ae4e0000b04e0000b24e0000b44e0000b64e0000b84e0000ba4e0000bc4e0000be4e0000c04e0000c24e0000c44e0000c64e0000c84e0000ca4e0000cc4e0000ce4e0000d04e0000d24e0000d44e0000d64e0000d84e0000da4e0000dc4e00002efb000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -982,7 +982,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000016970000189700001a9700001c9700001e97000020970000229700002497000026970000289700002a9700002c9700002e97000030970000329700003497000036970000389700003a9700003c9700003e9700004097000042970000449700004697000048970000
+    m_ExpandedIDs: 00000000aa4e0000ac4e0000ae4e0000b04e0000b24e0000b44e0000b64e0000b84e0000ba4e0000bc4e0000be4e0000c04e0000c24e0000c44e0000c64e0000c84e0000ca4e0000cc4e0000ce4e0000d04e0000d24e0000d44e0000d64e0000d84e0000da4e0000dc4e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

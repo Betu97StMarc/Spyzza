@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
         
 
 
-        if (!this.GetComponent<ActionController>().isActionActive && this.GetComponent<Player>().alive)
+        if (!this.GetComponent<ActionController>().isActionActive && this.GetComponent<Player>().alive && !GameManager.Instance.gamePaused)
         {
             if (Input.GetKey(KeyCode.W))
             {
@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.D))
                 transform.Translate(Vector3.right * Time.deltaTime * speed);
 
-            if (Input.GetButtonDown("Jump") && canJump && speed > 2.5f)
+            if (Input.GetKey(KeyCode.Space) && canJump && speed > 2.5f)
             {
                 canJump = false;
                 gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 250f, 0));

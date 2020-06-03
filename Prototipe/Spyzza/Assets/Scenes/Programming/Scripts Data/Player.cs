@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public bool redCard;
     public bool blueCard;
     public bool greenCard;
+    public int level;
     public LayerMask enemyMask;
     //public Text xT;
     //public Text yT;
@@ -29,7 +30,6 @@ public class Player : MonoBehaviour
         redCard = false;
         blueCard = false;
         greenCard = false;
-        
     }
     public void Update()
     {
@@ -262,7 +262,7 @@ public class Player : MonoBehaviour
         //level = data.level;
         //health = data.health;
 
-        
+        level = data.level;
         position.x = data.position[0];
         position.y = data.position[1];
         position.z = data.position[2];

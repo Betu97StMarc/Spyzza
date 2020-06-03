@@ -2953,6 +2953,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1459847369}
+  objectPlayer: {fileID: 1459847367}
   mainCanvas: {fileID: 1192514683}
   menuCanvas: {fileID: 0}
   optionsCanvas: {fileID: 0}
@@ -2977,6 +2978,7 @@ MonoBehaviour:
   camera3B: {fileID: 0}
   camera4L: {fileID: 0}
   camera4B: {fileID: 0}
+  continueButton: {fileID: 0}
   mug: 0
   postIt: 0
   redCard: 0
@@ -6225,6 +6227,7 @@ MonoBehaviour:
   redCard: 0
   blueCard: 0
   greenCard: 0
+  level: 0
   enemyMask:
     serializedVersion: 2
     m_Bits: 2048

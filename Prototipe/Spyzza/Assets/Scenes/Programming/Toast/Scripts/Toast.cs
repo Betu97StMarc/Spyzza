@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Created by: Hamza Herbou        (mobile games developer)
-// email     : hamza95herbou@gmail.com
+
 
 public class Toast : MonoBehaviour {
 	float _counter = 0f;
@@ -22,7 +21,7 @@ public class Toast : MonoBehaviour {
 
 	void Awake () {Instance = this;}
 
-	void Start () {toastColorImage = GetComponent <Image> ();}
+	
 
 	void Update(){
 		if (_isToasting){
@@ -45,7 +44,7 @@ public class Toast : MonoBehaviour {
 	/// make an empty toast with text: "Hello ;)"
 	/// </summary>
 	public void Show(){
-		toastColorImage.color = co [0];
+		//toastColorImage.color = co [0];
 		toastText.text = "Hello ;)";
 		_duration = 1f;
 		_counter = 0f;
@@ -57,7 +56,7 @@ public class Toast : MonoBehaviour {
 	/// </summary>
 	/// <param name="text">(string), toast message.</param>
 	public void Show(string text){
-		toastColorImage.color = co [0];
+		//toastColorImage.color = co [0];
 		toastText.text = text;
 		_duration = 1f;
 		_counter = 0f;
@@ -70,7 +69,7 @@ public class Toast : MonoBehaviour {
 	/// <param name="text">(string), toast message.</param>
 	/// <param name="duration">(float), toast duration in seconds.</param>
 	public void Show(string text, float duration){
-		toastColorImage.color = co [0];
+		//toastColorImage.color = co [0];
 		toastText.text = text;
 		_duration = duration;
 		_counter = 0f;
@@ -84,8 +83,8 @@ public class Toast : MonoBehaviour {
 	/// <param name="duration">(float), toast duration in seconds.</param>
 	/// <param name="color">(Toast.ToastColor), toast background color, ex: Toast.ToastColor.Green .</param>
 	public void Show(string text, float duration, ToastColor color){
-		toastColorImage.color = co [0];
-		toastColorImage.color = co [(int)color];
+		//toastColorImage.color = co [0];
+		//toastColorImage.color = co [(int)color];
 		toastText.text = text;
 		_duration = duration;
 		_counter = 0f;
