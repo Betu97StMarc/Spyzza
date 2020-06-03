@@ -216,6 +216,11 @@ public class ActionController : Singleton<ActionController>
             }
         }
 
+        if (tag_collider == "BossCollider")
+        {
+            Debug.Log("A PELEAR!");
+        }
+
         if (tag_collider == "CogerAzul")
         {
             if (!this.GetComponent<Player>().blueCard)
@@ -232,6 +237,24 @@ public class ActionController : Singleton<ActionController>
             else
             {
                 GameManager.Instance.MessageBlueCardCollected();
+            }
+        }
+
+        if (tag_collider == "CogerVerde")
+        {
+            if (!this.GetComponent<Player>().greenCard)
+            {
+                this.GetComponent<Animator>().Play("CogerTaza");
+                this.GetComponent<Player>().greenCard = true;
+                time_action = 1;
+                time_change_location = 20;
+                time_change_location_2 = 20;
+                isActionActive = true;
+                greenCard.SetActive(false);
+            }
+            else
+            {
+                GameManager.Instance.MessageGreenCardCollected();
             }
         }
 

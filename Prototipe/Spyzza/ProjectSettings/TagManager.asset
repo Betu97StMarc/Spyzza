@@ -23,6 +23,7 @@ TagManager:
   - Laser3
   - BossCollider
   - Pantalles
+  - CogerVerde
   layers:
   - Default
   - TransparentFX

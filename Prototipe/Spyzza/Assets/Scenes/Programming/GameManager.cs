@@ -66,18 +66,33 @@ public class GameManager : Singleton<GameManager>
         sceneName = currentScene.name;
         if (sceneName == "Ricard Planta1")
         {
-            player.level = 1;
+            player.bossLevel = false;
             startPosition = new Vector3(61, -13, 18);
             alarmDisconnected = false;
             //timerText.enabled = false;
             SaveSystem.SavePlayer(player);
         }
 
-        if (sceneName == "Boss Ricard")
+        if (sceneName == "Ricard Boss")
         {
-            player.level = 2;
+            player.bossLevel = true;
             objectPlayer.transform.position = new Vector3(-0.5f, 0.15f, 3.1f);
             SaveSystem.SavePlayer(player);
+            MessageSave();
+            Debug.Log("entre");
+        }
+
+        if (sceneName == "Menu")
+        {
+            player.LoadPlayer();
+            if(player.bossLevel)
+            {
+                continueButton.interactable = true;
+            }
+            else
+            {
+                continueButton.interactable = false;
+            }
         }
     }
 
@@ -92,7 +107,7 @@ public class GameManager : Singleton<GameManager>
         * 
         */
 
-        /* 
+         
         if (Input.GetKey(KeyCode.K))
         {
             SaveSystem.SavePlayer(player);
@@ -100,7 +115,7 @@ public class GameManager : Singleton<GameManager>
 
         if (Input.GetKey(KeyCode.L))
         {
-            
+            player.LoadPlayer();   
         }
 
         if (Input.GetKey(KeyCode.L))
@@ -115,7 +130,7 @@ public class GameManager : Singleton<GameManager>
             }
 
         }
-        */
+        
         if (sceneName == "Menu" || sceneName == "Cinematic" || sceneName == "Extras")
         {
             Cursor.visible = true;
@@ -145,15 +160,12 @@ public class GameManager : Singleton<GameManager>
         if (sceneName == "Ricard Boss")
         {
             //LOGICA SALA BOSS
-            if(winCanvas.activeSelf == true)
+            UpdatePause();
+            UpdateUI();
+            UpdateInteractPanel();
+            if (Input.GetKey(KeyCode.E) && isThePlayerColliding)
             {
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-            }
-            else
-            {
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
+                CallAnalyseActionCollider();
             }
         }
         if (sceneName == "Ricard Planta1")
@@ -268,65 +280,68 @@ public class GameManager : Singleton<GameManager>
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
-        timerText.text = alarmTimer.ToString("#.0 s");
-
-        if (sceneName == "Boss Ricard")
+        if (sceneName == "Ricard Planta1")
         {
-            //LOGICA SALA BOSS
-        }
+            timerText.text = alarmTimer.ToString("#.0 s");
+
+            if (sceneName == "Boss Ricard")
+            {
+                //LOGICA SALA BOSS
+            }
 
             if (player.GetComponent<Player>().mug)
-        {
-            mug = true;
-        }
-        else
-        {
-            mug = false;
-        }
+            {
+                mug = true;
+            }
+            else
+            {
+                mug = false;
+            }
 
-        if (player.GetComponent<Player>().postIt)
-        {
-            postIt = true;
-        }
-        else
-        {
-            postIt = false;
-        }
+            if (player.GetComponent<Player>().postIt)
+            {
+                postIt = true;
+            }
+            else
+            {
+                postIt = false;
+            }
 
-        if (player.GetComponent<Player>().redCard)
-        {
-            redCard = true;
-        }
-        else
-        {
-            redCard = false;
-        }
+            if (player.GetComponent<Player>().redCard)
+            {
+                redCard = true;
+            }
+            else
+            {
+                redCard = false;
+            }
 
-        if (player.GetComponent<Player>().blueCard)
-        {
-            blueCard = true;
-        }
-        else
-        {
-            blueCard = false;
-        }
+            if (player.GetComponent<Player>().blueCard)
+            {
+                blueCard = true;
+            }
+            else
+            {
+                blueCard = false;
+            }
 
-        if (player.GetComponent<Player>().greenCard)
-        {
-            greenCard = true;
-        }
-        else
-        {
-            greenCard = false;
-        }
+            if (player.GetComponent<Player>().greenCard)
+            {
+                greenCard = true;
+            }
+            else
+            {
+                greenCard = false;
+            }
 
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            inventaryCanvas.SetActive(true);
-        }
-        else if (Input.GetKeyUp(KeyCode.I))
-        {
-            inventaryCanvas.SetActive(false);
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                inventaryCanvas.SetActive(true);
+            }
+            else if (Input.GetKeyUp(KeyCode.I))
+            {
+                inventaryCanvas.SetActive(false);
+            }
         }
     }
 
@@ -468,7 +483,6 @@ public class GameManager : Singleton<GameManager>
         {
             interactText.enabled = false;
             interactBackground.SetActive(false);
-
         }
     }
 
@@ -511,6 +525,12 @@ public class GameManager : Singleton<GameManager>
     public void ActivatePickUpBlueCard()
     {
         SetTagCollidingObject("CogerAzul");
+        CallAnalyseActionCollider();
+    }
+
+    public void ActivatePickUpGreenCard()
+    {
+        SetTagCollidingObject("CogerVerde");
         CallAnalyseActionCollider();
     }
 
@@ -589,6 +609,11 @@ public class GameManager : Singleton<GameManager>
     public void MessageScreens()
     {
         Toast.Instance.Show("AL RAIT! APAGUEM PANTALLAS!", 4f, Toast.ToastColor.Dark);
+    }
+
+    public void MessageSave()
+    {
+        Toast.Instance.Show("La partida ha sido GUARDADA", 4f, Toast.ToastColor.Dark);
     }
 
 }

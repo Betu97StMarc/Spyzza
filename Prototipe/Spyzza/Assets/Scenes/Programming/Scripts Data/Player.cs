@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public bool redCard;
     public bool blueCard;
     public bool greenCard;
-    public int level;
+    public bool bossLevel;
     public LayerMask enemyMask;
     //public Text xT;
     //public Text yT;
@@ -37,21 +37,22 @@ public class Player : MonoBehaviour
         //yT.text = gameObject.transform.position.y.ToString();
         //zT.text = gameObject.transform.position.z.ToString();
         position = transform.position;
-        enemyCollider = Physics.OverlapSphere(gameObject.transform.position, 3, enemyMask);
+        /*enemyCollider = Physics.OverlapSphere(gameObject.transform.position, 3, enemyMask);
 
         if (enemyCollider.Length > 0)
         {
             Debug.Log("s'ha torbat un enemic");
+            
             if (Input.GetKey(KeyCode.E))
             {
                 Steal();
             }
-        }
+        }*/
         
        
     }
 
-    public void Steal()
+    /*public void Steal()
     {
         for (int i = 0; i < enemyCollider.Length; i++)
         {
@@ -74,7 +75,7 @@ public class Player : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 
     private void OnTriggerEnter(Collider other)
     {
@@ -120,6 +121,13 @@ public class Player : MonoBehaviour
             GameManager.Instance.SetTagCollidingObject(other.tag);
         }
 
+        if (other.tag == "CogerVerde")
+        {
+            GameManager.Instance.setIsThePlayerColliding(true);
+            GameManager.Instance.SetTagCollidingObject(other.tag);
+            Debug.Log("verde");
+        }
+
         if (other.tag == "PuertaFinal")
         {
             GameManager.Instance.setIsThePlayerColliding(true);
@@ -134,11 +142,9 @@ public class Player : MonoBehaviour
 
         if (other.tag == "BossCollider")
         {
-            GameManager.Instance.winCanvas.SetActive(true);
-            
-            /*GameManager.Instance.setIsThePlayerColliding(true);
+            GameManager.Instance.setIsThePlayerColliding(true);
             GameManager.Instance.SetTagCollidingObject(other.tag);
-            Debug.Log("Im in");*/
+            Debug.Log("Im in");
         }
 
         if (other.tag == "Taquilla")
@@ -212,6 +218,12 @@ public class Player : MonoBehaviour
             GameManager.Instance.UpdateInteractPanel();
         }
 
+        if (other.tag == "CogerVerde")
+        {
+            GameManager.Instance.setIsThePlayerColliding(false);
+            GameManager.Instance.UpdateInteractPanel();
+        }
+
         if (other.tag == "PuertaFinal")
         {
             GameManager.Instance.setIsThePlayerColliding(false);
@@ -262,11 +274,13 @@ public class Player : MonoBehaviour
         //level = data.level;
         //health = data.health;
 
-        level = data.level;
+        //level = data.level;
         position.x = data.position[0];
         position.y = data.position[1];
         position.z = data.position[2];
         transform.position = position;
+        bossLevel = data.bossLevel;
+        Debug.Log("He cargado");
     }
 
 
