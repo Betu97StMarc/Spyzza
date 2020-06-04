@@ -10,13 +10,15 @@ public class LoadSceneAfterVideoEnded : MonoBehaviour
     public GameObject videoCanvas;
     void Start()
     {
-        if (GameManager.Instance.sceneName == "Cinematic")
+        if (SceneManager.GetActiveScene().name == "Cinematic")
         {
             VideoPlayer.loopPointReached += LoadSceneGame;
+            Debug.Log("estoy en cinematic");
         }
-        if (GameManager.Instance.sceneName == "Extras")
+        if (SceneManager.GetActiveScene().name == "Extras")
         {
             VideoPlayer.loopPointReached += LoadSceneMenu;
+            Debug.Log("estoy en extras");
         }
     }
     public void LoadSceneGame(VideoPlayer vp)
