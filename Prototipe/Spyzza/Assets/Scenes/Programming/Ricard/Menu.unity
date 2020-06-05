@@ -751,8 +751,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 114567125}
   m_HandleRect: {fileID: 1524384579}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -80
+  m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -1457,7 +1457,8 @@ AudioSource:
   m_GameObject: {fileID: 649706478}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1660875636444182711, guid: 0f3795ceb5b639e40bfb8e20bdf778a9,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 58d3e93ca47b60e4b87d4870fd99a8f1, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -3437,7 +3438,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Extras
+  m_Text: "CR\xC9DITOS"
 --- !u!222 &1334994748
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3938,8 +3939,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 86266617}
   m_HandleRect: {fileID: 1597114576}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -40
+  m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -4180,7 +4181,8 @@ AudioSource:
   m_GameObject: {fileID: 1654647889}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2901148453436938979, guid: 0f3795ceb5b639e40bfb8e20bdf778a9,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: f41e5093c4c69ee49afc685eba77f54b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.511

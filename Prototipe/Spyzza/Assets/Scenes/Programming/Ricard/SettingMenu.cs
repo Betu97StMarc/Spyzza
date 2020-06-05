@@ -57,6 +57,7 @@ public class SettingMenu : MonoBehaviour
 
     public void SetFullscreen (bool isFullscreen)
     {
+        GameManager.Instance.buttonSound.Play();
         Screen.fullScreen = isFullscreen;
     }
 }
