@@ -209,10 +209,10 @@ public class Boss : MonoBehaviour
             {
                 vidaDown[i].SetActive(false);
             }
-            if (Input.GetKey(KeyCode.B))
+            if (Input.GetKey(KeyCode.Escape))
             {
                 Debug.Log("W");
-                GameManager.Instance.GoMenu();
+                GameManager.Instance.GoExtras();
             }
         }
     }

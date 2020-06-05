@@ -260,6 +260,7 @@ public class ActionController : Singleton<ActionController>
                 time_action = 1;
                 time_change_location = 20;
                 time_change_location_2 = 20;
+                time_go_boss = 20;
                 isActionActive = true;
                 greenCard.SetActive(false);
             }
