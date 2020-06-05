@@ -18,6 +18,7 @@ public class ActionController : Singleton<ActionController>
     public GameObject redCard;
     public GameObject greenCard;
     public Animator safeBox;
+    public Boss boss;
     private bool isShowedToastWindows;
 
 
@@ -56,6 +57,7 @@ public class ActionController : Singleton<ActionController>
                         isSafe = false;
                         time_toast = 0;
                         this.GetComponent<Player>().redCard = true;
+                        GameManager.Instance.pickUpSound.Play();
                     }
                 }
             }
@@ -113,6 +115,7 @@ public class ActionController : Singleton<ActionController>
         {
             this.GetComponent<Animator>().Play("CogerTaza");
             this.GetComponent<Player>().greenCard = true;
+            GameManager.Instance.pickUpSound.Play();
             time_action = 1;
             time_change_location = 20;
             time_change_location_2 = 20;
@@ -135,6 +138,7 @@ public class ActionController : Singleton<ActionController>
                 if (this.GetComponent<Player>().postIt)
                 {
                     this.GetComponent<Animator>().Play("Caja Fuerte");
+                    GameManager.Instance.safeSound.Play();
                     safeBox.Play("Caja Fuerte Abrir");
                     time_action = 7;
                     isActionActive = true;
@@ -184,6 +188,7 @@ public class ActionController : Singleton<ActionController>
             {
                 this.GetComponent<Animator>().Play("CogerTaza");
                 this.GetComponent<Player>().mug = true;
+                GameManager.Instance.pickUpSound.Play();
                 time_action = 1;
                 time_change_location = 20;
                 time_change_location_2 = 20;
@@ -203,6 +208,7 @@ public class ActionController : Singleton<ActionController>
             {
                 this.GetComponent<Animator>().Play("CogerTaza");
                 this.GetComponent<Player>().postIt = true;
+                GameManager.Instance.pickUpSound.Play();
                 time_action = 1;
                 time_change_location = 20;
                 time_change_location_2 = 20;
@@ -218,7 +224,10 @@ public class ActionController : Singleton<ActionController>
 
         if (tag_collider == "BossCollider")
         {
-            Debug.Log("A PELEAR!");
+            boss.first = true;
+            boss.BossEngine();
+
+
         }
 
         if (tag_collider == "CogerAzul")
@@ -227,6 +236,7 @@ public class ActionController : Singleton<ActionController>
             {
                 this.GetComponent<Animator>().Play("CogerTaza");
                 this.GetComponent<Player>().blueCard = true;
+                GameManager.Instance.pickUpSound.Play();
                 time_action = 1;
                 time_change_location = 20;
                 time_change_location_2 = 20;
@@ -246,6 +256,7 @@ public class ActionController : Singleton<ActionController>
             {
                 this.GetComponent<Animator>().Play("CogerTaza");
                 this.GetComponent<Player>().greenCard = true;
+                GameManager.Instance.pickUpSound.Play();
                 time_action = 1;
                 time_change_location = 20;
                 time_change_location_2 = 20;
@@ -297,20 +308,7 @@ public class ActionController : Singleton<ActionController>
             GameManager.Instance.MessageScreens();
         }
 
-        if (tag_collider == "Taquilla")
-        {
-
-            if (GameManager.Instance.isInside)
-            {
-                this.GetComponent<Animator>().SetTrigger("SalirTaquilla");
-                GameManager.Instance.isInside = false;
-            }
-            else
-            {
-                this.GetComponent<Animator>().SetTrigger("EntrarTaquilla");
-                GameManager.Instance.isInside = true;
-            }
-        }
+        
     }
 
     public void ActionCajaFuerte()

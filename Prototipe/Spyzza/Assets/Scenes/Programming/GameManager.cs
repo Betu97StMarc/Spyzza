@@ -8,25 +8,22 @@ using UnityEngine.Audio;
 public class GameManager : Singleton<GameManager>
 {
     // PUBLIC ATRIBUTES
+
+    [Header("Player")]
     public Player player;
     public GameObject objectPlayer;
+
+    [Header("Canvas")]
     public GameObject mainCanvas;
     public GameObject menuCanvas;
     public GameObject optionsCanvas;
     public GameObject pauseCanvas;
-    public bool gamePaused;
     public GameObject inventaryCanvas;
     public GameObject alarmCanvas;
     public GameObject gameOverCanvas;
     public GameObject winCanvas;
-    public GameObject laser1;
-    public GameObject laser2;
-    public GameObject laser3;
-    public Vector3 startPosition;
-    public bool alarmDisconnected;
-    public bool alarmActivated;
-    public float alarmTimer = 120;
-    public Text timerText;
+
+    [Header("Items Canvas")]
     public GameObject timerBackground;
     public Text interactText;
     public GameObject interactBackground;
@@ -39,15 +36,43 @@ public class GameManager : Singleton<GameManager>
     public Light camera4L;
     public GameObject camera4B;
     public Button continueButton;
+    public Text timerText;
+
+    [Header("Lasers")]
+    public GameObject laser1;
+    public GameObject laser2;
+    public GameObject laser3;
+
+    [Header("Bools")]
     public bool mug;
     public bool postIt;
     public bool redCard;
     public bool blueCard;
-    public bool greenCard;
-    public FindEM[] enemys;
+    public bool greenCard;  
     public bool isInside;
-    public Scene currentScene;
+    public bool gamePaused;
+    public bool alarmDisconnected;
+    public bool alarmActivated;
+
+
+    [Header("Sounds")]
+    public GameObject alarmSound;
+    public AudioSource enemyDetect;
+    public AudioSource taserSound;
+    public AudioSource deathSound;
+    public AudioSource loseSound;
+    public AudioSource pickUpSound;
+    public AudioSource jumpSound;
+    public AudioSource safeSound;
+    public AudioSource buttonSound;
+
+
+    [Header("Others")]
     public string sceneName;
+    public Scene currentScene;
+    public FindEM[] enemys;
+    public float alarmTimer = 120;
+    public Vector3 startPosition;
 
 
 
@@ -85,7 +110,7 @@ public class GameManager : Singleton<GameManager>
         if (sceneName == "Menu")
         {
             player.LoadPlayer();
-            if(player.bossLevel)
+            if (player.bossLevel)
             {
                 continueButton.interactable = true;
             }
@@ -107,15 +132,15 @@ public class GameManager : Singleton<GameManager>
         * 
         */
 
-         
-        if (Input.GetKey(KeyCode.K))
+
+       /* if (Input.GetKey(KeyCode.K))
         {
             SaveSystem.SavePlayer(player);
         }
 
         if (Input.GetKey(KeyCode.L))
         {
-            player.LoadPlayer();   
+            player.LoadPlayer();
         }
 
         if (Input.GetKey(KeyCode.L))
@@ -129,8 +154,8 @@ public class GameManager : Singleton<GameManager>
                 player.GetComponent<Player>().alive = true;
             }
 
-        }
-        
+        }*/
+
         if (sceneName == "Menu" || sceneName == "Cinematic" || sceneName == "Extras")
         {
             Cursor.visible = true;
@@ -146,12 +171,12 @@ public class GameManager : Singleton<GameManager>
             else if(player.level == 1)
             {
                 continueButton.interactable = false;
-            }*/
+            }*/     
         }
 
-       
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+
+        if (Input.GetKeyDown(KeyCode.Escape) && !Boss.FightStart)
         {
             PauseGame();
             UpdatePause();
@@ -220,12 +245,14 @@ public class GameManager : Singleton<GameManager>
                 alarmTimer -= Time.deltaTime;
                 timerText.enabled = true;
                 timerBackground.SetActive(true);
+                alarmSound.SetActive(true);
             }
             else
             {
                 timerText.enabled = false;
                 timerBackground.SetActive(false);
                 alarmTimer = 120;
+                alarmSound.SetActive(false);
             }
 
             if (alarmTimer <= 0)
@@ -257,6 +284,7 @@ public class GameManager : Singleton<GameManager>
     public void GoBoss()
     {
         SceneManager.LoadScene("Ricard Boss", LoadSceneMode.Single);
+        buttonSound.Play();
     }
 
     public void UpdateUI()
@@ -349,12 +377,14 @@ public class GameManager : Singleton<GameManager>
     {
         SceneManager.LoadScene("Cinematic", LoadSceneMode.Single);
         menuCanvas.SetActive(false);
+        buttonSound.Play();
     }
 
     public void GoExtras()
     {
         SceneManager.LoadScene("Extras", LoadSceneMode.Single);
         menuCanvas.SetActive(false);
+        buttonSound.Play();
     }
 
     public void GoMenu()
@@ -365,28 +395,32 @@ public class GameManager : Singleton<GameManager>
         gameOverCanvas.SetActive(false);
         Restart();*/
         SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+        buttonSound.Play();
     }
 
     public void GoOptions()
     {
-        //menuCanvas.SetActive(false);
+        menuCanvas.SetActive(false);
+        buttonSound.Play();
         optionsCanvas.SetActive(true);
     }
 
     public void CloseOptions()
     {
-        //menuCanvas.SetActive(true);
+        if(sceneName =="Menu")menuCanvas.SetActive(true);
+        buttonSound.Play();
         optionsCanvas.SetActive(false);
     }
 
     public void PauseGame()
     {
         gamePaused = !gamePaused;
+        buttonSound.Play();
     }
 
     public void UpdatePause()
     {
-        if(gamePaused)
+        if (gamePaused)
         {
             Time.timeScale = 0;
             pauseCanvas.SetActive(true);
@@ -402,18 +436,21 @@ public class GameManager : Singleton<GameManager>
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             player.GetComponent<Animator>().enabled = true;
-            player.GetComponentInChildren<RotationController>().enabled = true;
+            if (!Boss.FightStart)
+                player.GetComponentInChildren<RotationController>().enabled = true;
         }
     }
 
     public void ClosePause()
     {
         gamePaused = false;
+        buttonSound.Play();
     }
 
     public void ExitGame()
     {
         Application.Quit();
+        buttonSound.Play();
     }
 
     public void Restart()

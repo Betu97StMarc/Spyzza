@@ -20,6 +20,7 @@ public class FindEM : MonoBehaviour
     public LayerMask ObstacleMask;
     public GameObject[] patrolPoints; //Puntos a los que se movera/volvera el guardia mientras el jugador no haya sido escuchado/visto
     public Vector3 startPosition;
+    public bool hasPlayed;
 
     public bool Aggro = false, canSee = false, hasSeen = false, hearStop = false;
     public GameObject player;
@@ -47,7 +48,8 @@ public class FindEM : MonoBehaviour
             {
                 if (!hearStop) { Hear(); }
                 See();
-                if(hearStop && !canSee) { Patrol(); }
+                //GameManager.Instance.enemyDetect.Play();
+                if (hearStop && !canSee) { Patrol(); }
                 else if(hearStop && canSee) { See(); } 
             }
             else if (!hasSeen)
@@ -75,6 +77,9 @@ public class FindEM : MonoBehaviour
         player.GetComponent<Animator>().Play("Electrocuted");
         player.GetComponent<Player>().alive = false;
         //GameOver
+        GameManager.Instance.taserSound.Play();
+        GameManager.Instance.deathSound.Play();
+        GameManager.Instance.loseSound.Play();
         GameManager.Instance.GameOver();
     }
 
@@ -106,8 +111,10 @@ public class FindEM : MonoBehaviour
     }
     public void See()
     {
+        
         if (Vector3.Distance(transform.position, player.transform.position) <= seeRadius)
         {
+            
             Vector3 direction = (player.transform.position - transform.position).normalized;
             direction.y *= 0;
             float angle = Vector3.Angle(transform.forward, direction);
@@ -120,16 +127,23 @@ public class FindEM : MonoBehaviour
                     MoveToPlayer(player.transform.position);
                     canSee = true;
                     hasSeen = true;
+                    /*if (!hasPlayed)
+                    {
+                        GameManager.Instance.enemyDetect.Play();
+                        hasPlayed = true;
+                    }*/
                 }
             }
             else
             {
                 canSee = false;
+                hasPlayed = false;
             }
         }
         else
         {
             canSee = false;
+            hasPlayed = false;
         }
     }
     private void Hear()
@@ -142,6 +156,11 @@ public class FindEM : MonoBehaviour
 
     public void MoveToPlayer(Vector3 playerPosition)
     {
+        if (!hasPlayed)
+        {
+            GameManager.Instance.enemyDetect.Play();
+            hasPlayed = true;
+        }
         if (!catched)
         {
             Speed = 2;

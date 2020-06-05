@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKey(KeyCode.Space) && canJump && speed > 2.5f)
             {
+                //GameManager.Instance.jumpSound.Play();
                 canJump = false;
                 gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 250f, 0));
                 playerC.SetTrigger("Saltar");

@@ -571,19 +571,10 @@ MonoBehaviour:
   menuCanvas: {fileID: 0}
   optionsCanvas: {fileID: 0}
   pauseCanvas: {fileID: 0}
-  gamePaused: 0
   inventaryCanvas: {fileID: 0}
   alarmCanvas: {fileID: 0}
   gameOverCanvas: {fileID: 0}
   winCanvas: {fileID: 0}
-  laser1: {fileID: 0}
-  laser2: {fileID: 0}
-  laser3: {fileID: 0}
-  startPosition: {x: 0, y: 0, z: 0}
-  alarmDisconnected: 0
-  alarmActivated: 0
-  alarmTimer: 120
-  timerText: {fileID: 0}
   timerBackground: {fileID: 0}
   interactText: {fileID: 0}
   interactBackground: {fileID: 0}
@@ -596,16 +587,34 @@ MonoBehaviour:
   camera4L: {fileID: 0}
   camera4B: {fileID: 0}
   continueButton: {fileID: 0}
+  timerText: {fileID: 0}
+  laser1: {fileID: 0}
+  laser2: {fileID: 0}
+  laser3: {fileID: 0}
   mug: 0
   postIt: 0
   redCard: 0
   blueCard: 0
   greenCard: 0
-  enemys: []
   isInside: 0
+  gamePaused: 0
+  alarmDisconnected: 0
+  alarmActivated: 0
+  alarmSound: {fileID: 0}
+  enemyDetect: {fileID: 0}
+  taserSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  loseSound: {fileID: 0}
+  pickUpSound: {fileID: 0}
+  jumpSound: {fileID: 0}
+  safeSound: {fileID: 0}
+  buttonSound: {fileID: 0}
+  sceneName: 
   currentScene:
     m_Handle: 0
-  sceneName: 
+  enemys: []
+  alarmTimer: 120
+  startPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1318061528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,7 +1026,7 @@ MonoBehaviour:
         m_MethodName: LoadSceneMenu
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 1956299372}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Video.VideoPlayer, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
