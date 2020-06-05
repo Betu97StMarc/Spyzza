@@ -34,6 +34,7 @@ public class Pin : MonoBehaviour
                 col.GetComponent<Rotator>().speed *= col.GetComponent<Rotator>().speedChanger;
                 Score.PinCount++;
                 isPinned = true;
+                GameManager.Instance.buttonSound.Play();
             }
             else
             {
@@ -45,6 +46,7 @@ public class Pin : MonoBehaviour
         }else if(col.tag == "Pin")
         {
             FindObjectOfType<AlarmManager>().EndGame();
+            GameManager.Instance.loseSound.Play();
         }
     }
 }
