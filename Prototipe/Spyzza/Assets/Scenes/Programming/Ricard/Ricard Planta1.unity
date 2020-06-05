@@ -120,7 +120,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 2dcb3ca130a062d4c908f5be6c922546, type: 2}
 --- !u!1 &1849210
 GameObject:
   m_ObjectHideFlags: 0
@@ -16773,7 +16773,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &504795598
 Transform:
   m_ObjectHideFlags: 0
@@ -33487,7 +33487,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1011610470
 Transform:
   m_ObjectHideFlags: 0
@@ -40280,7 +40280,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1217510494
 Transform:
   m_ObjectHideFlags: 0
